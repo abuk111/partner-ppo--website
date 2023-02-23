@@ -1,3 +1,7 @@
+@use './colors' as c;
+@use './mixins' as mix;
+@use './animation' as a;
+
 *,
 *::before,
 *::after {
@@ -16,8 +20,270 @@ html {
 body {
 	font-family: 'Raleway', sans-serif;
 	font-size: 1.6rem;
+	background-color: c.$backgroundDark;
 }
 
-p {
-	color: red;
+.wrapper {
+	max-width: 1200px;
+	padding: 0 1.5em;
+	margin: 0 auto;
+}
+
+// NAVIGATION
+nav {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: fit-content;
+	z-index: 100;
+}
+
+.nav {
+	@include mix.flex-space(row);
+	margin: 1.5em auto;
+	color: c.$primary;
+
+	.logo {
+		a {
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			color: c.$primary;
+			text-decoration: none;
+		}
+		&__container {
+			width: 50%;
+			&-headline {
+				margin-bottom: 0.1em;
+				font-size: 3rem;
+				font-weight: medium;
+				text-transform: uppercase;
+				text-align: center;
+				word-spacing: 0.25em;
+			}
+			&-underline {
+				width: 100%;
+				height: 1px;
+				background-color: c.$primary;
+			}
+			&-text {
+				margin-top: 0.75em;
+				font-size: 1rem;
+				text-transform: uppercase;
+				font-weight: lighter;
+				word-spacing: 0.25em;
+			}
+		}
+	}
+
+	.burger-btn {
+		padding: 1em 0.5em;
+		z-index: 2;
+
+		.burger-bar {
+			position: relative;
+			@include mix.burger-bar;
+			transition: transform 0.3s;
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: -15px;
+				@include mix.burger-bar;
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 15px;
+				@include mix.burger-bar;
+			}
+		}
+		&:hover > .burger-bar {
+			transform: scale(1.15);
+		}
+	}
+
+	.navbar {
+		@include mix.flex-center(column);
+		position: fixed;
+		top: 0;
+		left: 100%;
+		// left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: c.$backgroundLight;
+		z-index: 1;
+
+		&__list {
+			@include mix.flex-center(column);
+			list-style: none;
+
+			&__elements {
+				margin: 0.75em auto;
+				padding: 0.75em;
+
+				&-link {
+					position: relative;
+					font-size: 3rem;
+					color: c.$darkText;
+					text-transform: uppercase;
+					text-decoration: none;
+					font-weight: bold;
+				}
+
+				&-link,
+				&-link::after,
+				&-link::before {
+					transition: 0.3s;
+				}
+
+				// LINKI
+
+				.link-animation::before,
+				.link-animation::after {
+					content: '';
+					position: absolute;
+					width: 0px;
+					bottom: -3px;
+					border-bottom: 2px solid c.$darkText;
+				}
+
+				.link-animation::before {
+					right: 50%;
+				}
+				.link-animation::after {
+					left: 50%;
+				}
+
+				.link-animation:hover::before,
+				.link-animation:hover::after {
+					width: 50%;
+				}
+			}
+		}
+	}
+
+	.navbar-active {
+		left: 0;
+	}
+}
+
+// MEDIA QUERIES
+
+@media (min-width: 768px) {
+	//NAV
+
+	.nav {
+		padding: 0 2em;
+
+		.logo {
+			&__container {
+				&-headline {
+					margin-bottom: 0.08em;
+					font-size: 3.6rem;
+				}
+				&-text {
+					margin-top: 0.7em;
+					font-size: 1.2rem;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	//NAV
+
+	.nav {
+		@include mix.flex-space(row);
+		margin-top: 2em;
+		padding: 0 3em;
+
+		.burger-btn {
+			display: none;
+		}
+
+		.logo {
+			&__container {
+				&-headline {
+					margin-bottom: 0.05em;
+					font-size: 3.2rem;
+				}
+				&-text {
+					margin-top: 0.5em;
+					font-size: 1.1rem;
+				}
+			}
+		}
+
+		.navbar {
+			position: static;
+			@include mix.flex-end(row);
+			width: fit-content;
+			height: fit-content;
+			background: none;
+
+			&__list {
+				@include mix.flex-space(row);
+
+				&__elements {
+					margin: 0.75em auto;
+					padding: 0.75em;
+
+					&-link {
+						font-size: 1.8rem;
+						color: c.$secondary;
+					}
+
+					//LINK
+					.link-animation:hover {
+						color: c.$primary;
+					}
+					.link-animation::before,
+					.link-animation::after {
+						border-bottom: 1px solid c.$primary;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.wrapper {
+		padding: 0;
+	}
+
+	// NAV
+
+	.nav {
+		margin-top: 1em;
+		.logo {
+			&__container {
+				&-headline {
+					margin-bottom: 0.05em;
+					font-size: 4.6rem;
+				}
+				&-text {
+					margin-top: 0.5em;
+					font-size: 1.5rem;
+				}
+			}
+		}
+		.navbar {
+			&__list {
+				&__elements {
+					margin: 1em auto;
+					padding: 1em;
+
+					&-link {
+						font-size: 2rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.test {
+	height: 50vh;
+	// color: white;
 }
