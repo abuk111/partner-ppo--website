@@ -3,6 +3,14 @@ const burgerBars = document.querySelector('.burger-bar')
 const navbar = document.querySelector('.navbar')
 const navbarListItem = document.querySelectorAll('.navbar__list__elements')
 
+const nav = document.querySelector('.nav')
+const allSection = document.querySelectorAll('.section')
+let navHeight
+let headerDarkHeight
+let headerGreyHeight
+
+const date = document.querySelector('.date')
+
 const showNav = () => {
 	navbar.classList.add('navbar-active')
 	navbar.classList.remove('navbar-hide')
@@ -38,4 +46,65 @@ const navHandling = () => {
 	})
 }
 
+const handleDate = params => {
+	const currentYear = new Date().getFullYear()
+	date.textContent = currentYear
+}
+
+const setNavHeight = () => {
+	if (window.innerWidth < 768) {
+		navHeight = 85
+		headerDarkHeight = 245
+		headerGreyHeight = 395
+	} else if (window.innerWidth >= 768) {
+		navHeight = 100
+		headerDarkHeight = 310
+		headerGreyHeight = 450
+	}
+}
+
+const headerBgAdd = params => {
+	if (window.scrollY > headerDarkHeight) {
+		nav.classList.add('nav-black-bgc')
+		nav.classList.remove('nav-dark-bgc')
+		nav.classList.remove('nav-medium-bgc')
+	} else if (window.scrollY <= headerDarkHeight) {
+		nav.classList.remove('nav-black-bgc')
+		nav.classList.remove('nav-dark-bgc')
+		nav.classList.remove('nav-medium-bgc')
+	}
+	if (window.scrollY > headerGreyHeight) {
+		nav.classList.remove('nav-black-bgc')
+		nav.classList.remove('nav-dark-bgc')
+		nav.classList.add('nav-medium-bgc')
+	}
+}
+
+const navBackgroundAdd = () => {
+	const currentSection = window.scrollY
+	setNavHeight()
+
+	allSection.forEach(section => {
+		if (section.classList.contains('header-bgc')) {
+			headerBgAdd()
+		} else if (section.classList.contains('dark-bgc') && section.offsetTop <= currentSection + navHeight) {
+			nav.classList.remove('nav-black-bgc')
+			nav.classList.add('nav-dark-bgc')
+			nav.classList.remove('nav-medium-bgc')
+		} else if (section.classList.contains('medium-bgc') && section.offsetTop <= currentSection + navHeight) {
+			nav.classList.remove('nav-black-bgc')
+			nav.classList.remove('nav-dark-bgc')
+			nav.classList.add('nav-medium-bgc')
+		}
+	})
+
+	// if (window.scrollY > 245) {
+	// 	nav.classList.add('nav-dark-bgc')
+	// } else {
+	// 	nav.classList.remove('nav-dark-bgc')
+	// }
+}
+
 burgerBtn.addEventListener('click', navHandling)
+window.addEventListener('scroll', navBackgroundAdd)
+handleDate()

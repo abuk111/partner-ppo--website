@@ -23,10 +23,30 @@ body {
 	background-color: c.$backgroundDark;
 }
 
+// GENERAL STYLES
+.section-head {
+	margin-bottom: 1.5em;
+	color: c.$primary;
+	font-size: 3rem;
+	// font-weight: 400;
+	font-weight: bold;
+	text-align: center;
+}
+
 .wrapper {
 	max-width: 1200px;
 	padding: 0 1.5em;
 	margin: 0 auto;
+}
+
+.nav-black-bgc {
+	background-color: c.$navBlackBg;
+}
+.nav-dark-bgc {
+	background-color: c.$backgroundDark;
+}
+.nav-medium-bgc {
+	background-color: c.$backgroundMedium;
 }
 
 // NAVIGATION
@@ -40,20 +60,24 @@ nav {
 
 .nav {
 	@include mix.flex-space(row);
-	margin: 1.5em auto;
+	// margin: 2em auto;
+	padding: 1em 1.75em;
 	color: c.$primary;
+	// background-color: c.$backgroundDark;
+	transition: background-color 0.3s;
 
 	.logo {
 		a {
 			font-family: 'Plus Jakarta Sans', sans-serif;
 			color: c.$primary;
+			// color: c.$secondary;
 			text-decoration: none;
 		}
 		&__container {
 			width: 50%;
 			&-headline {
 				margin-bottom: 0.1em;
-				font-size: 3rem;
+				font-size: 2.4rem;
 				font-weight: medium;
 				text-transform: uppercase;
 				text-align: center;
@@ -63,11 +87,13 @@ nav {
 				width: 100%;
 				height: 1px;
 				background-color: c.$primary;
+				// background-color: c.$secondary;
 			}
 			&-text {
-				margin-top: 0.75em;
-				font-size: 1rem;
+				margin-top: 0.25em;
+				font-size: 1.25rem;
 				text-transform: uppercase;
+				text-align: center;
 				font-weight: lighter;
 				word-spacing: 0.25em;
 			}
@@ -109,7 +135,8 @@ nav {
 		// left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: c.$backgroundLight;
+		// background-color: c.$backgroundLight;
+		background-color: c.$backgroundDark;
 		z-index: 1;
 
 		&__list {
@@ -123,7 +150,8 @@ nav {
 				&-link {
 					position: relative;
 					font-size: 3rem;
-					color: c.$darkText;
+					color: c.$secondary;
+					// color: c.$darkText;
 					text-transform: uppercase;
 					text-decoration: none;
 					font-weight: bold;
@@ -166,25 +194,358 @@ nav {
 	}
 }
 
+// HEADER
+
+header {
+	// margin-top: 116px;
+
+	.header {
+		background-color: c.$backgroundMedium;
+		position: relative;
+
+		&__hero-img {
+			position: relative;
+			width: 100%;
+			height: 480px;
+			background-image: url(../images/firefighters-6689112_640.jpg);
+			background-size: cover;
+			background-position: 50% 50%;
+			filter: grayscale(0.15);
+			transform: scaleX(-1);
+			z-index: 0;
+
+			&--mobile {
+				position: absolute;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				width: 70%;
+				top: 37%;
+				right: 1.5em;
+				font-family: 'Plus Jakarta Sans', sans-serif;
+				word-spacing: 0.25em;
+				color: c.$primary;
+				// color: c.$secondary;
+				// color: c.$whiteText;
+				text-align: right;
+				text-shadow: 0 0 10px c.$darkText;
+				z-index: 1;
+
+				&-head {
+					font-size: 3.5rem;
+
+					&2 {
+						right: 0;
+						font-size: 2rem;
+						font-weight: 200;
+						text-transform: uppercase;
+						text-align: right;
+						// color: c.$whiteText;
+
+						strong {
+							font-weight: 400;
+						}
+					}
+				}
+			}
+		}
+
+		&__hero-bg {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: c.$heroShadow;
+			z-index: 1;
+		}
+
+		&__box {
+			@include mix.flex-center(column);
+			padding-top: 1.5em;
+			padding-bottom: 1.5em;
+
+			&-desktophead {
+				display: none;
+			}
+
+			&-description {
+				margin-bottom: 1em;
+				color: c.$whiteText;
+				font-size: 1.6rem;
+				font-weight: 400;
+				line-height: 1.5em;
+				text-align: center;
+			}
+			&-button {
+				@include mix.button;
+				margin: 0.5em auto;
+				font-size: 2.2rem;
+				transition: transform 0.3s, color 0.3s, background-color 0.3s, border 0.3s;
+
+				&:hover {
+					@include mix.button-hover;
+				}
+			}
+		}
+	}
+}
+
+//ABOUT US
+
+.aboutus {
+	padding-top: 1em;
+	padding-bottom: 1.5em;
+	background-color: c.$backgroundMedium;
+
+	&__text {
+		color: c.$whiteText;
+		font-size: 1.6rem;
+		line-height: 1.5em;
+		text-align: left;
+
+		strong {
+			font-weight: 400;
+		}
+	}
+
+	&__box {
+		@include mix.flex-center(column);
+		margin-top: 1em;
+
+		&es {
+			min-height: 240px;
+			margin: 0.5em 0;
+			padding: 1.5em 1.5em;
+			color: c.$whiteText;
+			background-color: c.$backgroundDark;
+			border-radius: 1em;
+
+			&__head {
+				@include mix.flex-center(row);
+				margin-bottom: 1em;
+				color: c.$primary;
+
+				&-header {
+					width: 79%;
+					font-size: 2.2rem;
+					font-weight: 400;
+					text-align: center;
+				}
+
+				.fas {
+					margin-right: 0.5em;
+					font-size: 2.6rem;
+				}
+			}
+
+			&-text {
+				text-align: center;
+			}
+		}
+	}
+}
+
+// FOOTER
+
+.footer {
+	padding: 2em 1.5em;
+	color: c.$secondary;
+
+	&__line {
+		height: 1px;
+		width: 100%;
+		background-color: c.$secondary;
+	}
+
+	&__adress {
+		margin-bottom: 1em;
+		line-height: 1.5em;
+
+		&__company-name-h4 {
+			margin-bottom: 0.25em;
+			font-size: 1.8rem;
+			font-weight: 400;
+		}
+
+		&__company-name-p {
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		&__adress,
+		&__nip {
+			@include mix.flex-start(row);
+			// align-items: flex-start;
+			i {
+				width: 27px;
+				margin-right: 0.5em;
+				font-size: 2.4rem;
+				text-align: center;
+			}
+		}
+	}
+
+	&__contact {
+		margin: 2em auto 1em;
+		line-height: 1.5em;
+
+		&__head {
+			margin-bottom: 0.5em;
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		&-email,
+		&-phone {
+			@include mix.flex-start(row);
+			// align-items: flex-start;
+			margin-bottom: 0.25em;
+			line-height: 1.5em;
+
+			i {
+				width: 27px;
+				margin-right: 0.5em;
+				font-size: 2.4rem;
+				text-align: center;
+			}
+
+			p {
+				a {
+					margin-right: 2em;
+					color: c.$secondary;
+					text-decoration: none;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	&__mapsite,
+	&__service {
+		margin: 1em auto 1em;
+		line-height: 1.5em;
+		&__head {
+			margin-bottom: 0.5em;
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+		&__list {
+			padding-left: 1.5em;
+			&-item {
+				a {
+					color: c.$secondary;
+					text-decoration: none;
+					font-weight: 400;
+				}
+			}
+		}
+	}
+
+	&__date {
+		margin: 0.5em auto;
+		text-align: center;
+		font-weight: bold;
+	}
+}
+
 // MEDIA QUERIES
 
 @media (min-width: 768px) {
 	//NAV
 
 	.nav {
-		padding: 0 2em;
+		padding: 1em 2.5em;
 
 		.logo {
 			&__container {
 				&-headline {
 					margin-bottom: 0.08em;
-					font-size: 3.6rem;
+					font-size: 3.2rem;
 				}
 				&-text {
-					margin-top: 0.7em;
-					font-size: 1.2rem;
+					margin-top: 0.25em;
+					font-size: 1.65rem;
 				}
 			}
+		}
+	}
+
+	// HEADER
+
+	header {
+		.header {
+			&__hero-img {
+				height: 550px;
+				background-image: url(../images/firefighters-6689112_1920.jpg);
+				background-position: center;
+
+				&--mobile {
+					width: 50%;
+					top: 47%;
+					right: 3em;
+
+					&-head {
+						margin-bottom: 0.25em;
+						font-size: 4rem;
+
+						&2 {
+							font-size: 2.2rem;
+						}
+					}
+				}
+			}
+			&__box {
+				@include mix.flex-center(column);
+
+				&-description {
+					margin-bottom: 1em;
+					color: c.$whiteText;
+					font-size: 1.5rem;
+					text-align: left;
+				}
+				&-button {
+					width: 55%;
+				}
+			}
+		}
+	}
+
+	//ABOUT US
+
+	.aboutus {
+		padding-top: 2em;
+		&__box {
+			@include mix.flex-center(column);
+			// flex-wrap: wrap;
+			margin-top: 1em;
+
+			&es {
+				@include mix.flex-center(column);
+				max-width: 50%;
+				margin: 0.5em 0.5em;
+			}
+		}
+	}
+
+	// FOOTER
+
+	.footer {
+		@include mix.flex-center(row);
+		flex-wrap: wrap;
+
+		&__adress,
+		&__contact,
+		&__service,
+		&__mapsite {
+			// min-width: 40%;
+			flex-basis: 50%;
+			align-self: start;
+		}
+
+		&__adress,
+		&__mapsite {
+			padding-left: 2em;
 		}
 	}
 }
@@ -192,10 +553,14 @@ nav {
 @media (min-width: 992px) {
 	//NAV
 
+	.wrapper {
+		padding: 0 3em;
+	}
+
 	.nav {
 		@include mix.flex-space(row);
-		margin-top: 2em;
-		padding: 0 3em;
+
+		padding: 2em 3em;
 
 		.burger-btn {
 			display: none;
@@ -208,8 +573,8 @@ nav {
 					font-size: 3.2rem;
 				}
 				&-text {
-					margin-top: 0.5em;
-					font-size: 1.1rem;
+					margin-top: 0.25em;
+					font-size: 1.7rem;
 				}
 			}
 		}
@@ -245,6 +610,116 @@ nav {
 			}
 		}
 	}
+
+	// HEADER
+
+	header {
+		.header {
+			position: relative;
+			@include mix.flex-center(row);
+			// background-color: c.$backgroundLight;
+
+			&__hero-img {
+				width: 100%;
+				height: 650px;
+				background-image: url(../images/firefighters-6689112_1920.jpg);
+				background-size: cover;
+				background-position: 50% 50%;
+				filter: grayscale(0.15);
+				transform: scaleX(-1);
+			}
+
+			&__box {
+				position: absolute;
+				@include mix.flex-center(column);
+				align-items: flex-start;
+				// align-items: center;
+				width: 50%;
+				bottom: 0;
+				right: 0;
+				padding: 2em 3em;
+
+				&-desktophead {
+					@include mix.flex-center(column);
+					align-items: flex-start;
+					margin-bottom: 1em;
+					font-family: 'Plus Jakarta Sans', sans-serif;
+					word-spacing: 0.25em;
+					color: c.$primary;
+					// color: c.$whiteText;
+					text-shadow: none;
+					
+
+					&-head {
+						font-size: 4rem;
+
+						&2 {
+							font-size: 2rem;
+							text-transform: uppercase;
+
+							strong {
+								font-weight: 400;
+							}
+						}
+					}
+				}
+
+				&-button {
+					width: 100%;
+				}
+			}
+		}
+		.header__hero-img--mobile {
+			display: none;
+		}
+	}
+
+	//ABOUT US
+
+	.aboutus {
+		padding-top: 3em;
+		&__box {
+			&es {
+				max-width: 360px;
+				min-height: 300px;
+				margin: 1.5em 1.5em;
+
+				&__head {
+					margin-bottom: 1.5em;
+
+					&-header {
+						font-size: 2.2rem;
+						font-weight: 400;
+						text-align: center;
+					}
+
+					.fas {
+						margin-right: 0.5em;
+						font-size: 4rem;
+					}
+				}
+			}
+		}
+	}
+
+	// FOOTER
+
+	.footer {
+		padding: 2em 3em;
+		// flex-wrap: wrap;
+
+		&__adress,
+		&__contact,
+		&__service,
+		&__mapsite {
+			flex-basis: 25%;
+		}
+
+		&__adress,
+		&__mapsite {
+			padding-left: 0;
+		}
+	}
 }
 
 @media (min-width: 1200px) {
@@ -252,19 +727,31 @@ nav {
 		padding: 0;
 	}
 
+	.section-head {
+		margin-bottom: 1em;
+		font-size: 3.4rem;
+	}
+
 	// NAV
 
+	nav {
+		width: 100%;
+		background-color: c.$backgroundDark;
+	}
+
 	.nav {
-		margin-top: 1em;
+		margin-top: 0;
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
 		.logo {
 			&__container {
 				&-headline {
 					margin-bottom: 0.05em;
-					font-size: 4.6rem;
+					font-size: 4rem;
 				}
 				&-text {
-					margin-top: 0.5em;
-					font-size: 1.5rem;
+					margin-top: 0.25em;
+					font-size: 2.1rem;
 				}
 			}
 		}
@@ -279,6 +766,56 @@ nav {
 					}
 				}
 			}
+		}
+	}
+
+	// HEADER
+
+	header {
+		margin-top: 136px;
+	}
+
+	//ABOUT US
+
+	.aboutus {
+		padding-top: 3em;
+		&__box {
+			@include mix.flex-space(row);
+			&es {
+				max-width: 370px;
+				margin: 2em 1.25em;
+				padding: 2em;
+
+				&:first-child {
+					margin-left: 0;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&__head {
+					margin-bottom: 2em;
+				}
+			}
+		}
+	}
+
+	// FOOTER
+
+	.footer {
+		padding: 2em 0;
+
+		&__adress,
+		&__contact,
+		&__service,
+		&__mapsite {
+			margin-bottom: 2em;
+		}
+
+		&__date {
+			margin-top: 1em;
+			width: 100%;
+			text-align: center;
 		}
 	}
 }
