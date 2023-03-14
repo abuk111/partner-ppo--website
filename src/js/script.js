@@ -11,6 +11,8 @@ let headerGreyHeight
 
 const date = document.querySelector('.date')
 
+const wrapper = document.querySelector('#wrapper')
+
 const showNav = () => {
 	navbar.classList.add('navbar-active')
 	navbar.classList.remove('navbar-hide')
@@ -63,7 +65,7 @@ const setNavHeight = () => {
 	}
 }
 
-const headerBgAdd = params => {
+const headerBgAdd = () => {
 	if (window.scrollY > headerDarkHeight) {
 		nav.classList.add('nav-black-bgc')
 		nav.classList.remove('nav-dark-bgc')
@@ -80,7 +82,7 @@ const headerBgAdd = params => {
 	}
 }
 
-const navBackgroundAdd = () => {
+const navBackgroundAddMobile = () => {
 	const currentSection = window.scrollY
 	setNavHeight()
 
@@ -97,14 +99,29 @@ const navBackgroundAdd = () => {
 			nav.classList.add('nav-medium-bgc')
 		}
 	})
+}
 
-	// if (window.scrollY > 245) {
-	// 	nav.classList.add('nav-dark-bgc')
-	// } else {
-	// 	nav.classList.remove('nav-dark-bgc')
-	// }
+const navBackgroundAddDesktop = () => {
+	const currentSection = window.scrollY
+	setNavHeight()
+
+	allSection.forEach(section => {
+		if (section.classList.contains('medium-bgc') && section.offsetTop <= currentSection + navHeight) {
+			navbar.classList.add('nav-dark-bgc')
+			navbar.classList.remove('nav-medium-bgc')
+		} else if ((section.classList.contains('dark-bgc') && section.offsetTop <= currentSection + navHeight) || section.classList.contains('header-bgc')) {
+			navbar.classList.remove('nav-dark-bgc')
+			navbar.classList.add('nav-medium-bgc')
+		}
+	})
 }
 
 burgerBtn.addEventListener('click', navHandling)
-window.addEventListener('scroll', navBackgroundAdd)
+window.addEventListener('scroll', () => {
+	if (window.innerWidth < 992) {
+		navBackgroundAddMobile()
+	} else {
+		navBackgroundAddDesktop()
+	}
+})
 handleDate()

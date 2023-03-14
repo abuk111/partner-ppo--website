@@ -475,6 +475,7 @@ header {
 
 	header {
 		.header {
+	
 			&__hero-img {
 				height: 550px;
 				background-image: url(../images/firefighters-6689112_1920.jpg);
@@ -557,16 +558,22 @@ header {
 		padding: 0 3em;
 	}
 
+	nav {
+		position: absolute;
+	}
+
 	.nav {
 		@include mix.flex-space(row);
-
+		// position: relative;
 		padding: 2em 3em;
+		background-color: transparent;
 
 		.burger-btn {
 			display: none;
 		}
 
 		.logo {
+			// position: absolute;
 			&__container {
 				&-headline {
 					margin-bottom: 0.05em;
@@ -580,11 +587,17 @@ header {
 		}
 
 		.navbar {
-			position: static;
+			position: fixed;
+			top: 2em;
+			left: auto;
+			right: 3em;
 			@include mix.flex-end(row);
 			width: fit-content;
 			height: fit-content;
-			background: none;
+			padding: 0 1.25em;
+			background: c.$backgroundMedium;
+			border-radius: 2em;
+			transition: background-color .3s;
 
 			&__list {
 				@include mix.flex-space(row);
@@ -594,8 +607,9 @@ header {
 					padding: 0.75em;
 
 					&-link {
-						font-size: 1.8rem;
-						color: c.$secondary;
+						font-size: 1.6rem;
+						// font-weight: 400;
+						color: c.$whiteText;
 					}
 
 					//LINK
@@ -608,6 +622,13 @@ header {
 					}
 				}
 			}
+		}
+
+		.nav-dark-bgc {
+			background-color: c.$backgroundDark;
+		}
+		.nav-medium-bgc {
+			background-color: c.$backgroundMedium;
 		}
 	}
 
@@ -648,7 +669,6 @@ header {
 					color: c.$primary;
 					// color: c.$whiteText;
 					text-shadow: none;
-					
 
 					&-head {
 						font-size: 4rem;
@@ -679,10 +699,21 @@ header {
 	.aboutus {
 		padding-top: 3em;
 		&__box {
+			@include mix.flex-center(row);
 			&es {
-				max-width: 360px;
-				min-height: 300px;
-				margin: 1.5em 1.5em;
+				display: grid;
+				grid-template-rows: 1fr 2fr;
+				width: 33%;
+				min-height: 370px;
+				margin: 2em 1.25em;
+				padding: 2em;
+
+				&:first-child {
+					margin-left: 0;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
 
 				&__head {
 					margin-bottom: 1.5em;
@@ -724,6 +755,7 @@ header {
 
 @media (min-width: 1200px) {
 	.wrapper {
+		position: relative;
 		padding: 0;
 	}
 
@@ -733,11 +765,6 @@ header {
 	}
 
 	// NAV
-
-	nav {
-		width: 100%;
-		background-color: c.$backgroundDark;
-	}
 
 	.nav {
 		margin-top: 0;
@@ -756,23 +783,24 @@ header {
 			}
 		}
 		.navbar {
-			&__list {
-				&__elements {
-					margin: 1em auto;
-					padding: 1em;
-
-					&-link {
-						font-size: 2rem;
-					}
-				}
-			}
+			right: calc((100vw - 1200px) / 2);
+			// padding-right: 0;
 		}
 	}
 
 	// HEADER
 
 	header {
-		margin-top: 136px;
+		.header {
+			&__hero-img {
+				height: 750px;
+			}
+			&__box {
+				width: 600px;
+				right: calc((100vw - 1200px) / 2);
+				padding-right: 0;
+			}
+		}
 	}
 
 	//ABOUT US
@@ -782,17 +810,6 @@ header {
 		&__box {
 			@include mix.flex-space(row);
 			&es {
-				max-width: 370px;
-				margin: 2em 1.25em;
-				padding: 2em;
-
-				&:first-child {
-					margin-left: 0;
-				}
-				&:last-child {
-					margin-right: 0;
-				}
-
 				&__head {
 					margin-bottom: 2em;
 				}
