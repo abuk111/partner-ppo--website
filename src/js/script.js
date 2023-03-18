@@ -48,6 +48,48 @@ const navHandling = () => {
 	})
 }
 
+const navHighlight = params => {
+	const currentPage = window.location.pathname
+
+	switch (currentPage) {
+		case '/index.html':
+			navbarListItem.forEach(item => {
+				if (item.children[0].id == 'mainPage') {
+					item.children[0].classList.add('link-active')
+				}
+			})
+			break
+		case '/uslugi.html':
+			navbarListItem.forEach(item => {
+				if (item.children[0].id == 'servicePage') {
+					item.children[0].classList.add('link-active')
+				}
+			})
+			break
+		case '/doswiadczenie.html':
+			navbarListItem.forEach(item => {
+				if (item.children[0].id == 'expPage') {
+					item.children[0].classList.add('link-active')
+				}
+			})
+			break
+		case '/faq.html':
+			navbarListItem.forEach(item => {
+				if (item.children[0].id == 'FAQPage') {
+					item.children[0].classList.add('link-active')
+				}
+			})
+			break
+		case '/kontakt.html':
+			navbarListItem.forEach(item => {
+				if (item.children[0].id == 'contactPage') {
+					item.children[0].classList.add('link-active')
+				}
+			})
+			break
+	}
+}
+
 const handleDate = params => {
 	const currentYear = new Date().getFullYear()
 	date.textContent = currentYear
@@ -109,7 +151,10 @@ const navBackgroundAddDesktop = () => {
 		if (section.classList.contains('medium-bgc') && section.offsetTop <= currentSection + navHeight) {
 			navbar.classList.add('nav-dark-bgc')
 			navbar.classList.remove('nav-medium-bgc')
-		} else if ((section.classList.contains('dark-bgc') && section.offsetTop <= currentSection + navHeight) || section.classList.contains('header-bgc')) {
+		} else if (
+			(section.classList.contains('dark-bgc') && section.offsetTop <= currentSection + navHeight) ||
+			section.classList.contains('header-bgc')
+		) {
 			navbar.classList.remove('nav-dark-bgc')
 			navbar.classList.add('nav-medium-bgc')
 		}
@@ -125,3 +170,4 @@ window.addEventListener('scroll', () => {
 	}
 })
 handleDate()
+navHighlight()

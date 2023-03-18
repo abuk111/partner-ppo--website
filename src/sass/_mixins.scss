@@ -45,16 +45,23 @@
 	font-weight: bold;
 	text-shadow: 0 0 3px c.$darkText;
 	cursor: pointer;
+	transition: transform 0.3s, color 0.3s, background-color 0.3s, border 0.3s;
 }
 
-// @mixin button-hover {
-// 	color: c.$primary;
-// 	background-color: c.$whiteText;
-// 	transform: scale(1.05);
-// }
+
 @mixin button-hover {
 	color: c.$primary;
 	background-color: transparent;
 	border: 2px solid c.$primary;
 	// transform: scale(1.05);
+}
+
+
+@mixin section-box {
+	min-height: 240px;
+	margin: 0.5em 0;
+	padding: 1.5em 1.5em;
+	color: c.$whiteText;
+	background-color: c.$backgroundDark;
+	border-radius: 1em;
 }

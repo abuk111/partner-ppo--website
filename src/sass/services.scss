@@ -1,0 +1,168 @@
+@use './colors' as c;
+@use './mixins' as mix;
+@use './animation' as a;
+
+// HEADER
+
+header {
+	.header {
+		&__hero-img {
+			height: 300px;
+		}
+		&__hero-bg {
+			background-color: c.$heroShadowLight;
+		}
+	}
+}
+
+// SERVICES
+
+.services {
+	padding-top: 3em;
+	padding-bottom: 1.5em;
+	color: c.$whiteText;
+	background-color: c.$backgroundMedium;
+
+	&__head-text,
+	&__endtext {
+		font-size: 1.6rem;
+		line-height: 1.5em;
+		text-align: center;
+
+        strong {
+			font-weight: 400;
+		}
+	}
+
+	&__box {
+		@include mix.flex-center(column);
+		margin: 2em auto;
+
+		&es {
+			@include mix.flex-center(column);
+			@include mix.section-box;
+
+			&__head {
+				@include mix.flex-center(row);
+				margin-bottom: 1em;
+				color: c.$primary;
+
+				&-header {
+					width: 79%;
+					font-size: 2.2rem;
+					font-weight: 400;
+					text-align: center;
+				}
+
+				.fas {
+					margin-right: 0.5em;
+					font-size: 2.6rem;
+				}
+			}
+
+			&-text {
+				text-align: center;
+				margin-bottom: 1em;
+			}
+
+			&-button {
+				@include mix.button;
+				width: 100%;
+				margin: 0.5em auto;
+				font-size: 1.8rem;
+
+				&:hover {
+					@include mix.button-hover;
+				}
+			}
+		}
+	}
+}
+
+// MEDIA QUERIES
+
+@media (min-width: 768px) {
+	// HEADER
+
+	header {
+		.header {
+			&__hero-img {
+				height: 400px;
+			}
+		}
+	}
+
+	//SERVICES
+
+	.services {
+		padding-top: 2em;
+		&__box {
+			&es {
+				max-width: 50%;
+				margin: 0.5em 0.5em;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	//SERVICES
+
+	.services {
+		padding-top: 2em;
+		padding-bottom: 3em;
+
+		&__box {
+			@include mix.flex-center(row);
+			margin-top: 1em;
+			margin-bottom: 1em;
+			&es {
+				display: grid;
+				grid-template-rows: 1fr 2fr;
+				width: 33%;
+				min-height: 440px;
+				margin: 2em 1em;
+				padding: 2em;
+
+				&:first-child {
+					margin-left: 0;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+
+				&__head {
+					margin-bottom: 1.5em;
+
+					&-header {
+						font-size: 2.2rem;
+						font-weight: 400;
+						text-align: center;
+					}
+
+					.fas {
+						margin-right: 0.5em;
+						font-size: 4rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	//SERVICES
+
+	.services {
+		padding-top: 3em;
+		&__box {
+			@include mix.flex-space(row);
+			&es {
+                min-height: 420px;
+				&__head {
+					margin-bottom: 1em;
+				}
+			}
+		}
+	}
+}

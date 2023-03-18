@@ -197,8 +197,6 @@ nav {
 // HEADER
 
 header {
-	// margin-top: 116px;
-
 	.header {
 		background-color: c.$backgroundMedium;
 		position: relative;
@@ -275,13 +273,13 @@ header {
 				font-size: 1.6rem;
 				font-weight: 400;
 				line-height: 1.5em;
-				text-align: center;
+				text-align: left;
 			}
 			&-button {
 				@include mix.button;
 				margin: 0.5em auto;
 				font-size: 2.2rem;
-				transition: transform 0.3s, color 0.3s, background-color 0.3s, border 0.3s;
+			
 
 				&:hover {
 					@include mix.button-hover;
@@ -314,12 +312,7 @@ header {
 		margin-top: 1em;
 
 		&es {
-			min-height: 240px;
-			margin: 0.5em 0;
-			padding: 1.5em 1.5em;
-			color: c.$whiteText;
-			background-color: c.$backgroundDark;
-			border-radius: 1em;
+			@include mix.section-box;
 
 			&__head {
 				@include mix.flex-center(row);
@@ -416,6 +409,11 @@ header {
 					color: c.$secondary;
 					text-decoration: none;
 					font-weight: 400;
+					transition: color 0.3s;
+
+					&:hover {
+						color: c.$primary;
+					}
 				}
 			}
 		}
@@ -437,6 +435,11 @@ header {
 					color: c.$secondary;
 					text-decoration: none;
 					font-weight: 400;
+					transition: color 0.3s;
+
+					&:hover {
+						color: c.$primary;
+					}
 				}
 			}
 		}
@@ -475,7 +478,6 @@ header {
 
 	header {
 		.header {
-	
 			&__hero-img {
 				height: 550px;
 				background-image: url(../images/firefighters-6689112_1920.jpg);
@@ -597,7 +599,7 @@ header {
 			padding: 0 1.25em;
 			background: c.$backgroundMedium;
 			border-radius: 2em;
-			transition: background-color .3s;
+			transition: background-color 0.3s;
 
 			&__list {
 				@include mix.flex-space(row);
@@ -613,11 +615,14 @@ header {
 					}
 
 					//LINK
-					.link-animation:hover {
+					.link-animation:hover,
+					.link-active {
 						color: c.$primary;
 					}
 					.link-animation::before,
-					.link-animation::after {
+					.link-animation::after,
+					.link-active::before,
+					.link-active::after {
 						border-bottom: 1px solid c.$primary;
 					}
 				}
