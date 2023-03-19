@@ -60,6 +60,9 @@ const navHighlight = params => {
 			})
 			break
 		case '/uslugi.html':
+		case '/instrukcje.html':
+		case '/kontrole.html':
+		case '/szkolenia.html':
 			navbarListItem.forEach(item => {
 				if (item.children[0].id == 'servicePage') {
 					item.children[0].classList.add('link-active')

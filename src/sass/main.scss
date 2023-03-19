@@ -25,12 +25,7 @@ body {
 
 // GENERAL STYLES
 .section-head {
-	margin-bottom: 1.5em;
-	color: c.$primary;
-	font-size: 3rem;
-	// font-weight: 400;
-	font-weight: bold;
-	text-align: center;
+	@include mix.section-head;
 }
 
 .wrapper {
@@ -279,7 +274,6 @@ header {
 				@include mix.button;
 				margin: 0.5em auto;
 				font-size: 2.2rem;
-			
 
 				&:hover {
 					@include mix.button-hover;
@@ -309,7 +303,7 @@ header {
 
 	&__box {
 		@include mix.flex-center(column);
-		margin-top: 1em;
+		margin: 1em auto 1.5em;
 
 		&es {
 			@include mix.section-box;
@@ -334,6 +328,25 @@ header {
 
 			&-text {
 				text-align: center;
+			}
+		}
+	}
+
+	&__citybox {
+		color: c.$whiteText;
+		&-text {
+			margin-bottom: 1em;
+		}
+		&-list {
+			list-style: none;
+			&-item {
+				line-height: 1.5em;
+				.fa-solid {
+					margin-right: 0.5em;
+				}
+				&:last-child{
+					margin-top: 0.5em;
+				}
 			}
 		}
 	}

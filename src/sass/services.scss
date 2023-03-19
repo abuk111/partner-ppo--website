@@ -2,6 +2,15 @@
 @use './mixins' as mix;
 @use './animation' as a;
 
+h1 {
+	display: none;
+}
+
+.section-head {
+	display: block;
+	@include mix.section-head;
+}
+
 // HEADER
 
 header {
@@ -29,7 +38,7 @@ header {
 		line-height: 1.5em;
 		text-align: center;
 
-        strong {
+		strong {
 			font-weight: 400;
 		}
 	}
@@ -54,7 +63,8 @@ header {
 					text-align: center;
 				}
 
-				.fas {
+				.fas,
+				.fa-solid {
 					margin-right: 0.5em;
 					font-size: 2.6rem;
 				}
@@ -77,6 +87,13 @@ header {
 			}
 		}
 	}
+}
+
+// INSTRUCTION
+
+.instruction {
+	color: c.$whiteText;
+	background-color: c.$backgroundMedium;
 }
 
 // MEDIA QUERIES
@@ -114,6 +131,7 @@ header {
 
 		&__box {
 			@include mix.flex-center(row);
+			flex-wrap: wrap;
 			margin-top: 1em;
 			margin-bottom: 1em;
 			&es {
@@ -155,10 +173,13 @@ header {
 
 	.services {
 		padding-top: 3em;
+		
 		&__box {
 			@include mix.flex-space(row);
+			flex-wrap: nowrap;
 			&es {
-                min-height: 420px;
+				width: 275px;
+				min-height: 420px;
 				&__head {
 					margin-bottom: 1em;
 				}
