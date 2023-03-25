@@ -1,0 +1,32 @@
+@use './colors' as c;
+@use './mixins' as mix;
+@use './animation' as a;
+
+// HEADER
+
+
+header {
+	.header {
+		&__hero-img {
+			height: 300px;
+		}
+		&__hero-bg {
+			background-color: c.$heroShadowLight;
+		}
+	}
+}
+
+
+// MEDIA QUERIES
+
+@media (min-width: 768px) {
+	// HEADER
+
+	header {
+		.header {
+			&__hero-img {
+				height: 400px;
+			}
+		}
+	}
+}

@@ -11,7 +11,11 @@ let headerGreyHeight
 
 const date = document.querySelector('.date')
 
-const wrapper = document.querySelector('#wrapper')
+
+
+
+
+
 
 const showNav = () => {
 	navbar.classList.add('navbar-active')
@@ -63,6 +67,7 @@ const navHighlight = params => {
 		case '/instrukcje.html':
 		case '/kontrole.html':
 		case '/szkolenia.html':
+		case '/plany.html':
 			navbarListItem.forEach(item => {
 				if (item.children[0].id == 'servicePage') {
 					item.children[0].classList.add('link-active')
