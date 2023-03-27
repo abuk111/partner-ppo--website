@@ -4,7 +4,6 @@
 
 // HEADER
 
-
 header {
 	.header {
 		&__hero-img {
@@ -16,6 +15,182 @@ header {
 	}
 }
 
+// CONTACT
+
+.medium-bgc {
+	color: c.$whiteText;
+	background-color: c.$backgroundMedium;
+}
+
+.section-head {
+	margin-bottom: 1em;
+}
+
+.contact {
+	padding-top: 2em;
+	padding-bottom: 1em;
+
+	&__contactbox {
+		&__adressbox {
+			margin-bottom: 1em;
+			line-height: 1.5em;
+
+			&-head {
+				margin-bottom: 0.75em;
+				color: c.$primary;
+			}
+
+			&-name {
+				margin-bottom: 0.25em;
+				font-size: 1.8rem;
+				strong {
+					font-weight: 400;
+				}
+			}
+
+			&-name-p {
+				font-size: 1.8rem;
+				font-weight: bold;
+			}
+
+			&-adress,
+			&-nip {
+				@include mix.flex-start(row);
+				// align-items: flex-start;
+				i {
+					width: 27px;
+					margin-right: 0.5em;
+					font-size: 2.4rem;
+					text-align: center;
+				}
+			}
+		}
+
+		&__mailbox {
+			&-head {
+				margin-bottom: 0.75em;
+				color: c.$primary;
+			}
+
+			&-email,
+			&-phone {
+				@include mix.flex-start(row);
+				// align-items: flex-start;
+				margin-bottom: 0.25em;
+				line-height: 1.5em;
+
+				i {
+					width: 27px;
+					margin-right: 0.5em;
+					font-size: 2.4rem;
+					text-align: center;
+				}
+
+				p {
+					line-height: 1.5em;
+					a {
+						margin-right: 2em;
+						color: c.$whiteText;
+						text-decoration: none;
+						font-weight: 400;
+
+						transition: color 0.3s;
+
+						&:hover {
+							color: c.$primary;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__mapbox {
+		&-head {
+			margin: 0.75em auto;
+			color: c.$primary;
+		}
+		iframe {
+			width: 100%;
+			height: 50vh;
+		}
+	}
+}
+
+// FORM
+
+.form {
+	&__header {
+		padding-top: 1em;
+		padding-bottom: 2em;
+		color: c.$primary;
+	}
+	&__formbox {
+		&__formelement {
+			@include mix.flex-center(column);
+			align-items: flex-start;
+
+			label {
+				margin-bottom: 0.5em;
+				font-size: 2rem;
+				font-weight: bold;
+			}
+
+			input,
+			textarea {
+				width: 100%;
+				font-size: 1.5rem;
+				margin-bottom: 1em;
+				padding: 0.5em;
+				background-color: c.$white;
+				border: transparent;
+				border-radius: 1em;
+
+				&::placeholder {
+					padding-left: 1em;
+					font-family: 'Raleway', sans-serif;
+				}
+
+				&:focus {
+					outline-color: c.$primary;
+				}
+			}
+
+			input {
+				height: 3em;
+			}
+			textarea {
+				height: 10em;
+				min-height: 10em;
+				max-height: 10em;
+				min-width: 100%;
+				max-width: 100%;
+
+				&::placeholder {
+					padding-top: 0.5em;
+				}
+			}
+
+			.error-text {
+				display: none;
+				margin: 0.5em 0;
+				color: red;
+			}
+
+			.show {
+				display: block;
+			}
+		}
+
+		&__send {
+			@include mix.button;
+			width: 95%;
+			margin: 1em 0;
+			font-size: 2rem;
+			font-weight: bold;
+		}
+	}
+}
 
 // MEDIA QUERIES
 
@@ -28,5 +203,30 @@ header {
 				height: 400px;
 			}
 		}
+	}
+
+	// CONTACT
+
+	.contact {
+		&__contactbox {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+
+			&__adressbox,
+			&__contactbox {
+				min-width: 40%;
+			}
+
+			&__contactbox {
+				padding-right: 2em;
+			}
+		}
+	}
+
+	// FORM
+
+	.form {
+		padding-top: 0.5em;
+		padding-bottom: 1.5em;
 	}
 }

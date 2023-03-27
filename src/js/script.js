@@ -11,12 +11,6 @@ let headerGreyHeight
 
 const date = document.querySelector('.date')
 
-
-
-
-
-
-
 const showNav = () => {
 	navbar.classList.add('navbar-active')
 	navbar.classList.remove('navbar-hide')

@@ -19,20 +19,21 @@
 <body>
 
     <!-- @include nav.kit -->
+
     <!-- @include header-subpages.kit -->
 
 
-    <section class="contact medium-bg section">
+    <section class="contact medium-bgc section">
         <div class="wrapper">
             <h1 class="contact__head section-head">Kontakt</h1>
             <div class="contact__contactbox">
                 <div class="contact__contactbox__adressbox">
-                    <h2 class="contact__contactbox-head">Dane firmy</h2>
+                    <h2 class="contact__contactbox__adressbox-head">Dane firmy</h2>
                     <h3 class="contact__contactbox__adressbox-name">
-                        Usługi przeciwpożarowe
+                        <strong>Usługi przeciwpożarowe</strong>
                     </h3>
                     <p class="contact__contaxtbox__adressbox-name-p ">
-                        PARTNER PPOŻ
+                        <strong>PARTNER PPOŻ</strong>
                     </p>
                     <p class="contact__contaxtbox__adressbox-name-p ">
                         Piotr Kulik
@@ -49,7 +50,7 @@
                 </div>
 
                 <div class="contact__contactbox__mailbox">
-                    <h4 class="contact__contactbox__mailbox-head footer-header">Dane kontaktowe:</h4>
+                    <h2 class="contact__contactbox__mailbox-head footer-header">Dane kontaktowe</h2>
                     <div class="contact__contactbox__mailbox-email">
                         <i class="far fa-envelope"></i>
                         <p> <a href="mailto:partnerppoz@wp.pl">partnerppoz@wp.pl</a> <br> <a
@@ -64,8 +65,41 @@
             </div>
 
             <div class="contact__mapbox">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d636.2052121744911!2d19.017731929264468!3d50.369894954111686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716d58d7d5a289b%3A0x386632f7af40f5b5!2sPartnerPpo%C5%BC%20Piotr%20Kulik!5e0!3m2!1spl!2spl!4v1679758851870!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <h2 class="contact__mapbox-head">Nasza lokalizacja</h2>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d636.2052121744911!2d19.017731929264468!3d50.369894954111686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4716d58d7d5a289b%3A0x386632f7af40f5b5!2sPartnerPpo%C5%BC%20Piotr%20Kulik!5e0!3m2!1spl!2spl!4v1679758851870!5m2!1spl!2spl"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
+        </div>
+    </section>
+
+    <section class="form medium-bgc section">
+        <div class="wrapper">
+            <h2 class="form__header">Napisz do nas!</h2>
+            <form class="form__formbox">
+                <div class="form__formbox__formelement">
+                    <label for="name">Imię i nazwisko:</label>
+                    <input type="text" id="name" placeholder="Podaj swoje imię i nazwisko">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form__formbox__formelement">
+                    <label for="mail">Adres e-mail</label>
+                    <input type="text" id="mail" placeholder="Podaj swój e-mail">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form__formbox__formelement">
+                    <label for="phone">Telefon:</label>
+                    <input type="text" id="phone" placeholder="Podaj swój numer telefonu">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form__formbox__formelement">
+                    <label for="message">Wiadomość:</label>
+                    <textarea type="text" id="message" placeholder="Wpisz wiadomość"></textarea>
+                    <p class="error-text">error</p>
+                </div>
+                <button class="form__formbox__send">Wyślij!</button>
+            </form>
         </div>
     </section>
 
