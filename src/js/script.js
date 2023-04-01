@@ -245,14 +245,32 @@ const verifyForms = () => {
 }
 
 const verifyCaptcha = () => {
-	if (grecaptcha.getResponse() === '') {
-		alert('Proszę potwierdzić, że nie jesteś robotem!')
-	} else {
-		verifyForms()
-	}
+	grecaptcha.execute()
+
+	const token = grecaptcha.getResponse()
+
+	fetch('https://www.google.com/recaptcha/api/siteverify', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(token),
+	})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Odpowiedź serwera:', data)
+			// Tutaj można dodać kod obsługi odpowiedzi serwera
+		})
+		.catch(error => {
+			console.error('Błąd podczas wysyłania żądania:', error)
+			// Tutaj można dodać kod obsługi błędów
+		})
 }
 
 // form.addEventListener('submit', function (event) {
+
+
+
 // 	event.preventDefault()
 
 // 	// Pobierz odpowiedź reCAPTCHA
