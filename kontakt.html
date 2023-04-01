@@ -12,8 +12,12 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500&family=Raleway:ital,wght@0,200;0,400;0,700;1,200;1,400&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/a8324f3062.js" crossorigin="anonymous"></script>
-    <!-- <script src="https://www.google.com/recaptcha/api.js"></script> -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lep70wlAAAAAJ7RE21F4YYfDzlyh9ETMvAY2I48"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LdNTE0lAAAAAOkA1JT44dxW70YmqmOOjRTafaJH"></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("contact-form").submit();
+        }
+    </script>
     <link rel="stylesheet" href="./dist/css/main-min.css">
     <link rel="stylesheet" href="./dist/css/contact-min.css">
 </head>
@@ -117,7 +121,7 @@
         </div>
     </section>
 
-    <section class="form medium-bgc section">
+    <section class="form medium-bgc section" id="contact-form" action="?" method="POST">
         <div class="wrapper">
             <h2 class="form__header">Napisz do nas!</h2>
             <form class="form__formbox">
@@ -141,8 +145,8 @@
                     <textarea type="text" id="message" placeholder="Wpisz wiadomość"></textarea>
                     <p class="error-text">error</p>
                 </div>
-                <button class="form__formbox__send g-recaptcha" data-sitekey="reCAPTCHA_site_key"
-                    data-callback='onSubmit' data-action='submit'>Wyślij!</button>
+                <div class="g-recaptcha" data-sitekey="6LdNTE0lAAAAAOkA1JT44dxW70YmqmOOjRTafaJH"></div>
+                <button type="submit" class="form__formbox__send" >Wyślij!</button>
             </form>
         </div>
     </section>

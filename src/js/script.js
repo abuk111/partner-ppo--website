@@ -17,7 +17,7 @@ const mailForm = document.querySelector('#mail')
 const phoneForm = document.querySelector('#phone')
 const messageForm = document.querySelector('#message')
 
-const SRC = 'https://www.google.com/recaptcha/api.js?render=6Lep70wlAAAAAJ7RE21F4YYfDzlyh9ETMvAY2I48'
+const form = document.querySelector('#contact-form');
 
 const showNav = () => {
 	navbar.classList.add('navbar-active')
@@ -239,9 +239,25 @@ const checkErrors = input => {
 	}
 }
 
-function onSubmit(token) {
-	document.getElementById('demo-form').submit()
-}
+form.addEventListener('submit', function(event) {
+	event.preventDefault(); 
+  
+	// wywołanie reCAPTCHA i uzyskanie tokenu
+	grecaptcha.execute('6LdNTE0lAAAAAOkA1JT44dxW70YmqmOOjRTafaJH', {action: 'submit'}).then(function(token) {
+	  // wysłanie tokenu i danych formularza na serwer
+	 const formData = new FormData(form);
+	  formData.append('token', token);
+  
+	  // wysłanie żądania POST z danymi formularza i tokenem
+	  fetch('/wyslij-formularz', {
+		method: 'POST',
+		body: formData
+	  }).then(function(response) {
+		// obsługa odpowiedzi serwera
+		console.log('Odpowiedź serwera:', response);
+	  });
+	});
+  });
 
 burgerBtn.addEventListener('click', navHandling)
 window.addEventListener('scroll', () => {
@@ -256,10 +272,7 @@ navHighlight()
 
 sendBtn.addEventListener('click', e => {
 	e.preventDefault()
-	grecaptcha.ready(function () {
-		grecaptcha.execute('6Lep70wlAAAAAJ7RE21F4YYfDzlyh9ETMvAY2I48', { action: 'submit' }).then(function (token) {
-			checkInput([nameForm, mailForm, phoneForm, messageForm])
-			checkErrors([nameForm, mailForm, phoneForm, messageForm])
-		})
-	})
+	checkInput([nameForm, mailForm, phoneForm, messageForm])
+	checkErrors([nameForm, mailForm, phoneForm, messageForm])
+	
 })
