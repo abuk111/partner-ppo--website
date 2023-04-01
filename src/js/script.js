@@ -11,6 +11,14 @@ let headerGreyHeight
 
 const date = document.querySelector('.date')
 
+const sendBtn = document.querySelector('.form__formbox__send')
+const nameForm = document.querySelector('#name')
+const mailForm = document.querySelector('#mail')
+const phoneForm = document.querySelector('#phone')
+const messageForm = document.querySelector('#message')
+
+const SRC = 'https://www.google.com/recaptcha/api.js?render=6Lep70wlAAAAAJ7RE21F4YYfDzlyh9ETMvAY2I48'
+
 const showNav = () => {
 	navbar.classList.add('navbar-active')
 	navbar.classList.remove('navbar-hide')
@@ -163,6 +171,78 @@ const navBackgroundAddDesktop = () => {
 	})
 }
 
+const checkInput = input => {
+	input.forEach(el => {
+		if (el.value === '') {
+			showError(el, el.placeholder)
+		} else {
+			clearError(el)
+			if (el === mailForm) {
+				checkMail(el)
+			} else if (el === phoneForm) {
+				checkPhone(el)
+			}
+		}
+	})
+}
+
+const showError = (input, msg) => {
+	const inputBox = input.parentElement
+	const errorMsg = inputBox.querySelector('.error-text')
+
+	errorMsg.classList.add('show')
+	errorMsg.textContent = msg
+}
+
+const clearError = input => {
+	const inputBox = input.parentElement
+	const errorMsg = inputBox.querySelector('.error-text')
+
+	errorMsg.classList.remove('show')
+	errorMsg.textContent = 'error'
+}
+
+const checkMail = email => {
+	const re =
+		/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,3}))$/
+
+	email.value = email.value.trim()
+
+	if (re.test(email.value)) {
+		clearError(email)
+	} else {
+		showError(email, 'Podaj poprawny email!')
+	}
+}
+
+const checkPhone = phone => {
+	const re = /^(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)/
+
+	if (re.test(phone.value)) {
+		clearError(phone)
+	} else {
+		showError(phone, 'Podaj poprawny telefon!')
+	}
+}
+
+const checkErrors = input => {
+	let errorCount = 0
+
+	input.forEach(el => {
+		if (el.parentElement.querySelector('.error-text').textContent !== 'error') {
+			errorCount++
+		}
+	})
+	if (errorCount === 0) {
+		console.log('wysyłaj')
+		errorCount = 0
+	}
+}
+
+function onSubmit(token) {
+	document.getElementById('demo-form').submit()
+}
+
 burgerBtn.addEventListener('click', navHandling)
 window.addEventListener('scroll', () => {
 	if (window.innerWidth < 992) {
@@ -173,3 +253,13 @@ window.addEventListener('scroll', () => {
 })
 handleDate()
 navHighlight()
+
+sendBtn.addEventListener('click', e => {
+	e.preventDefault()
+	grecaptcha.ready(function () {
+		grecaptcha.execute('6Lep70wlAAAAAJ7RE21F4YYfDzlyh9ETMvAY2I48', { action: 'submit' }).then(function (token) {
+			checkInput([nameForm, mailForm, phoneForm, messageForm])
+			checkErrors([nameForm, mailForm, phoneForm, messageForm])
+		})
+	})
+})
