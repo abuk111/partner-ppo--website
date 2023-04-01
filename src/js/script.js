@@ -234,27 +234,40 @@ const checkErrors = input => {
 		}
 	})
 	if (errorCount === 0) {
-		console.log('wysyłaj')
 		errorCount = 0
+		console.log('działa kurwaaa')
 	}
 }
 
-form.addEventListener('submit', function (event) {
-	event.preventDefault()
+const verifyForms = () => {
+	checkInput([nameForm, mailForm, phoneForm, messageForm])
+	checkErrors([nameForm, mailForm, phoneForm, messageForm])
+}
 
-	// Pobierz odpowiedź reCAPTCHA
-	var response = grecaptcha.getResponse()
-
-	// Jeśli odpowiedź jest pusta
-	if (response.length == 0) {
-		// Wyświetl komunikat o błędzie
-		alert('Potwierdź, że nie jesteś robotem!')
-		return false
+const verifyCaptcha = () => {
+	if (grecaptcha.getResponse() === '') {
+		alert('Proszę potwierdzić, że nie jesteś robotem!')
+	} else {
+		verifyForms()
 	}
+}
 
-	// Jeśli odpowiedź istnieje, wyślij formularz
-	document.getElementById('contact-form').submit()
-})
+// form.addEventListener('submit', function (event) {
+// 	event.preventDefault()
+
+// 	// Pobierz odpowiedź reCAPTCHA
+// 	const response = grecaptcha.getResponse()
+
+// 	// Jeśli odpowiedź jest pusta
+// 	if (response.length == 0) {
+// 		// Wyświetl komunikat o błędzie
+// 		alert('Potwierdź, że nie jesteś robotem!')
+// 		return false
+// 	}
+
+// 	// Jeśli odpowiedź istnieje, wyślij formularz
+// 	document.getElementById('contact-form').submit()
+// })
 
 burgerBtn.addEventListener('click', navHandling)
 window.addEventListener('scroll', () => {
@@ -269,6 +282,5 @@ navHighlight()
 
 sendBtn.addEventListener('click', e => {
 	e.preventDefault()
-	checkInput([nameForm, mailForm, phoneForm, messageForm])
-	checkErrors([nameForm, mailForm, phoneForm, messageForm])
+	verifyCaptcha()
 })
