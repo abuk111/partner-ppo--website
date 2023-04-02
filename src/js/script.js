@@ -235,7 +235,9 @@ const checkErrors = input => {
 	})
 	if (errorCount === 0) {
 		errorCount = 0
-		console.log('działa kurwaaa')
+		console.log('start weryfikacji')
+		verifyCaptcha()
+		
 	}
 }
 
@@ -244,6 +246,42 @@ const verifyForms = () => {
 	checkErrors([nameForm, mailForm, phoneForm, messageForm])
 }
 
+
+// const verifyCaptcha = () => {
+// 	grecaptcha.execute()
+
+// 	const response = grecaptcha.getResponse()
+
+// 	response.ajax({
+//         type: "POST",
+//         url: 'https://www.google.com/recaptcha/api/siteverify',
+//         data: {"secret" : "6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X", "response" : response, "remoteip":"localhost"},
+//         contentType: 'application/x-www-form-urlencoded',
+//         success: function(data) { console.log(data); }
+//     });
+// }
+
+// const verifyCaptcha = () => {
+// 	grecaptcha.execute()
+// 	const token = grecaptcha.getResponse()
+// 	console.log(token)
+
+// 	const postData = {
+// 		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
+// 		response: 'USER_RESPONSE_KEY',
+// 	}
+
+// 	fetch('https://www.google.com/recaptcha/api/siteverify', {
+// 		method: 'POST',
+// 		headers: {
+// 			'Content-Type': 'application/x-www-form-urlencoded',
+// 		},
+// 		mode: 'cors',
+// 		body: new URLSearchParams(postData),
+// 	})
+// 		.then(response => response.json())
+// 		.then(data => console.log(data))
+// }
 const verifyCaptcha = () => {
 	grecaptcha.execute()
 
@@ -251,25 +289,19 @@ const verifyCaptcha = () => {
 
 	fetch('https://www.google.com/recaptcha/api/siteverify', {
 		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(token),
+		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
+		response: token,
 	})
 		.then(response => response.json())
 		.then(data => {
 			console.log('Odpowiedź serwera:', data)
-			// Tutaj można dodać kod obsługi odpowiedzi serwera
-		})
+					})
 		.catch(error => {
 			console.error('Błąd podczas wysyłania żądania:', error)
-			// Tutaj można dodać kod obsługi błędów
-		})
+					})
 }
 
 // form.addEventListener('submit', function (event) {
-
-
 
 // 	event.preventDefault()
 
@@ -300,5 +332,5 @@ navHighlight()
 
 sendBtn.addEventListener('click', e => {
 	e.preventDefault()
-	verifyCaptcha()
+	verifyForms()
 })

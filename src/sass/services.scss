@@ -155,7 +155,25 @@ header {
 	}
 }
 
-.plans,
+.plans {
+	&__box {
+		margin-top: 2em;
+		&-imagebox {
+			margin-top: 2em;
+			&-img {
+				width: 100%;
+				margin-bottom: 1em;
+				cursor: pointer;
+			}
+		}
+		&-imagetext {
+			padding: 0 2.5em;
+			font-style: italic;
+			text-align: center;
+		}
+	}
+}
+
 .control,
 .training {
 	&__box {
@@ -201,6 +219,19 @@ header {
 			&-imagebox {
 				img {
 					height: 300px;
+				}
+			}
+		}
+	}
+
+	.plans {
+		&__box {
+			&-imagebox {
+				@include mix.flex-space(row);
+flex-wrap: wrap;
+				&-img {
+					margin: 1em 1em;
+					width: 45%;
 				}
 			}
 		}
@@ -279,20 +310,8 @@ header {
 		}
 	}
 
-	.plans {
-		&__box {
-			&-imagebox {
-				@include mix.flex-space(row);
-
-				img {
-					margin: 1em 1.5em;
-					width: 45%;
-				}
-			}
-		}
-	}
-
 	
+
 	.control,
 	.training {
 		&__box {
