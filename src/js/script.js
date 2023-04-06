@@ -1,3 +1,5 @@
+// NAV AND BURGER VARIABLES
+
 const burgerBtn = document.querySelector('.burger-btn')
 const burgerBars = document.querySelector('.burger-bar')
 const navbar = document.querySelector('.navbar')
@@ -11,6 +13,8 @@ let headerGreyHeight
 
 const date = document.querySelector('.date')
 
+// FORM VARIABLES
+
 const sendBtn = document.querySelector('.form__formbox__send')
 const nameForm = document.querySelector('#name')
 const mailForm = document.querySelector('#mail')
@@ -18,6 +22,10 @@ const phoneForm = document.querySelector('#phone')
 const messageForm = document.querySelector('#message')
 
 const form = document.querySelector('#contact-form')
+
+const allPlanImages = document.querySelectorAll('.plans__box-imagebox-img')
+
+//NAVIGATION AND BURGER BUTTON
 
 const showNav = () => {
 	navbar.classList.add('navbar-active')
@@ -53,6 +61,8 @@ const navHandling = () => {
 		item.addEventListener('click', hideNav)
 	})
 }
+
+// CURRENT PAGE NAVIGATION HIGHLIGHT
 
 const navHighlight = params => {
 	const currentPage = window.location.pathname
@@ -100,10 +110,14 @@ const navHighlight = params => {
 	}
 }
 
+// SHOW CURRENT YEAR IN FOOTER
+
 const handleDate = params => {
 	const currentYear = new Date().getFullYear()
 	date.textContent = currentYear
 }
+
+// CHANGE NAVIGATION BACKGROUND COLOR
 
 const setNavHeight = () => {
 	if (window.innerWidth < 768) {
@@ -171,6 +185,8 @@ const navBackgroundAddDesktop = () => {
 	})
 }
 
+// CONTACT FORM VALIDATION
+
 const checkInput = input => {
 	input.forEach(el => {
 		if (el.value === '') {
@@ -237,7 +253,6 @@ const checkErrors = input => {
 		errorCount = 0
 		console.log('start weryfikacji')
 		verifyCaptcha()
-		
 	}
 }
 
@@ -245,7 +260,6 @@ const verifyForms = () => {
 	checkInput([nameForm, mailForm, phoneForm, messageForm])
 	checkErrors([nameForm, mailForm, phoneForm, messageForm])
 }
-
 
 // const verifyCaptcha = () => {
 // 	grecaptcha.execute()
@@ -295,10 +309,10 @@ const verifyCaptcha = () => {
 		.then(response => response.json())
 		.then(data => {
 			console.log('Odpowiedź serwera:', data)
-					})
+		})
 		.catch(error => {
 			console.error('Błąd podczas wysyłania żądania:', error)
-					})
+		})
 }
 
 // form.addEventListener('submit', function (event) {
@@ -319,6 +333,21 @@ const verifyCaptcha = () => {
 // 	document.getElementById('contact-form').submit()
 // })
 
+// ZOOM IMAGES OF EVACUATION PLAN
+
+const zoomPlanImgMobile = image => {
+const src = image.src
+
+window.open(src)
+}
+
+const zoomPlanImgDesktop = image => {
+	console.log('desktop')
+	console.log(image)
+}
+
+//ADD EVENT LISTENERS
+
 burgerBtn.addEventListener('click', navHandling)
 window.addEventListener('scroll', () => {
 	if (window.innerWidth < 992) {
@@ -329,6 +358,26 @@ window.addEventListener('scroll', () => {
 })
 handleDate()
 navHighlight()
+
+
+
+allPlanImages.forEach(img => {
+	img.addEventListener('click', e => {
+		if (window.innerWidth < 1200) {
+			zoomPlanImgMobile(img)
+		} else {
+			zoomPlanImgDesktop(img)
+		}
+	})
+})
+
+// allPlanImages.addEventListener('click', e => {
+// 	if (window.innerWidth < 1200) {
+// 		zoomPlanImgMobile(e)
+// 	} else {
+// 		zoomPlanImgDesktop(e)
+// 	}
+// })
 
 sendBtn.addEventListener('click', e => {
 	e.preventDefault()
