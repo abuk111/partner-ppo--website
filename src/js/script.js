@@ -23,7 +23,12 @@ const messageForm = document.querySelector('#message')
 
 const form = document.querySelector('#contact-form')
 
+// ZOOM EVACUATION PLAN IMAGES - VARIABLES
+
 const allPlanImages = document.querySelectorAll('.plans__box-imagebox-img')
+const imageZoomSection = document.querySelector('.imagezoom')
+const imageZoom = document.querySelector('.imagezoom__image-img')
+const zoomCloseBtn = document.querySelector('.imagezoom__closebtn')
 
 //NAVIGATION AND BURGER BUTTON
 
@@ -336,14 +341,43 @@ const verifyCaptcha = () => {
 // ZOOM IMAGES OF EVACUATION PLAN
 
 const zoomPlanImgMobile = image => {
-const src = image.src
+	const src = image.src
 
-window.open(src)
+	window.open(src)
 }
 
 const zoomPlanImgDesktop = image => {
-	console.log('desktop')
-	console.log(image)
+	const src = image.src
+
+	imageZoomSection.classList.add('imagezoom-show')
+	imageZoom.setAttribute('src', src)
+}
+
+const closeZoomSection = () => {
+	imageZoomSection.classList.remove('imagezoom-show')
+	imageZoom.setAttribute('src', '')
+}
+
+const zoomImg = e => {
+	//wskazuje pozycje kursora
+	const x = e.clientX
+	const y = e.clientY
+
+	//pozycja obrazu
+	const imgX = imageZoom.offsetLeft + (imageZoomSection.offsetLeft - imageZoomSection.offsetWidth / 2)
+	const imgY = imageZoom.offsetTop + (imageZoomSection.offsetTop - imageZoomSection.offsetHeight / 2)
+
+	//pozycja kursora wewnątrz obrazka
+	const newX = (imgX - x) * -1
+	const newY = (imgY - y) * -1
+
+	imageZoom.style.transformOrigin = `${newX}px ${newY}px`
+
+	imageZoom.classList.add('zoomed-image')
+}
+
+const resetImg = () => {
+	imageZoom.classList.remove('zoomed-image')
 }
 
 //ADD EVENT LISTENERS
@@ -359,8 +393,6 @@ window.addEventListener('scroll', () => {
 handleDate()
 navHighlight()
 
-
-
 allPlanImages.forEach(img => {
 	img.addEventListener('click', e => {
 		if (window.innerWidth < 1200) {
@@ -370,6 +402,11 @@ allPlanImages.forEach(img => {
 		}
 	})
 })
+
+imageZoom.addEventListener('mousemove', zoomImg)
+imageZoom.addEventListener('mouseout', resetImg)
+
+zoomCloseBtn.addEventListener('click', closeZoomSection)
 
 // allPlanImages.addEventListener('click', e => {
 // 	if (window.innerWidth < 1200) {

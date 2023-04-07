@@ -1,0 +1,157 @@
+@use './colors' as c;
+@use './mixins' as mix;
+@use './animation' as a;
+
+h1 {
+	display: none;
+}
+
+.section-head {
+	display: block;
+	@include mix.section-head;
+}
+
+// HEADER
+
+header {
+	.header {
+		&__hero-img {
+			height: 300px;
+		}
+		&__hero-bg {
+			background-color: c.$heroShadowLight;
+		}
+	}
+}
+
+// FAQ SECTION
+
+.faq {
+	padding-top: 3em;
+	padding-bottom: 1.5em;
+	color: c.$whiteText;
+
+	&__headsection {
+		&-text {
+			font-size: 1.6rem;
+			line-height: 1.5em;
+			text-align: center;
+
+			strong {
+				font-weight: 400;
+			}
+		}
+	}
+
+	&__articles {
+		@include mix.flex-center(column);
+		margin: 2em auto;
+
+		&box {
+			@include mix.flex-center(column);
+			@include mix.section-box;
+
+			&-head {
+				margin-bottom: 1em;
+				color: c.$primary;
+				font-size: 2.2rem;
+				font-weight: 400;
+				text-align: center;
+			}
+
+			&-img {
+				width: 100%;
+				margin-bottom: 1em;
+			}
+
+			&-describe {
+				text-align: left;
+				margin-bottom: 1em;
+			}
+
+			&-btn {
+				@include mix.button;
+				width: 100%;
+				margin: 0.5em auto;
+				font-size: 1.8rem;
+
+				&:hover {
+					@include mix.button-hover;
+				}
+			}
+		}
+	}
+}
+
+// MEDIA QUIERIES
+
+@media (min-width: 768px) {
+	// HEADER
+
+	header {
+		.header {
+			&__hero-img {
+				height: 400px;
+			}
+		}
+	}
+
+	//FAQ
+
+	.faq {
+		padding-top: 2em;
+		&__articles {
+			&box {
+				max-width: 70%;
+				margin: 0.5em 0.5em;
+			}
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	//FAQ
+
+	.faq {
+		padding-top: 2em;
+		padding-bottom: 3em;
+
+		&__articles {
+			@include mix.flex-center(row);
+			flex-wrap: wrap;
+			margin-top: 1em;
+			margin-bottom: 1em;
+			&box {
+				display: grid;
+				grid-template-rows: 1fr 2fr;
+				width: 45%;
+				min-height: 440px;
+				margin: 2em 1em;
+				padding: 2em;
+
+				&-head {
+					margin-bottom: 1.5em;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 1200px) {
+	// FAQ
+
+	.faq {
+		padding-top: 3em;
+
+		&__articles {
+			@include mix.flex-start(row);
+			// flex-wrap: nowrap;
+			&box {
+				width: 30.5%;
+				min-height: 420px;
+				&-head {
+					margin-bottom: 1em;
+				}
+			}
+		}
+	}
+}

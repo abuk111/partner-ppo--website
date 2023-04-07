@@ -188,6 +188,11 @@ header {
 	}
 }
 
+.imagezoom {
+	display: none;
+	z-index: 5;
+}
+
 // MEDIA QUERIES
 
 @media (min-width: 768px) {
@@ -228,7 +233,7 @@ header {
 		&__box {
 			&-imagebox {
 				@include mix.flex-space(row);
-flex-wrap: wrap;
+				flex-wrap: wrap;
 				&-img {
 					margin: 1em 1em;
 					width: 45%;
@@ -310,8 +315,6 @@ flex-wrap: wrap;
 		}
 	}
 
-	
-
 	.control,
 	.training {
 		&__box {
@@ -325,6 +328,9 @@ flex-wrap: wrap;
 }
 
 @media (min-width: 1200px) {
+	body {
+		position: relative;
+	}
 	//SERVICES
 
 	.services {
@@ -341,5 +347,48 @@ flex-wrap: wrap;
 				}
 			}
 		}
+	}
+
+	.imagezoom {
+		position: fixed;
+		width: 80%;
+		// height: 80%;
+		top: 50%;
+		left: 50%;
+		padding: 2em;
+		background-color: c.$backgroundDark;
+		border: 2px solid c.$primary;
+		border-radius: 2em;
+		transform: translate(-50%, -50%);
+
+		&__image {
+			width: 100%;
+			overflow: hidden;
+			&-img {
+				width: 100%;
+			}
+		}
+
+		&__closebtn {
+			@include mix.button;
+			margin-bottom: 2em;
+
+			&:hover {
+				@include mix.button-hover;
+			}
+
+			.fa-solid {
+				margin-right: 0.5em;
+			}
+		}
+	}
+
+	.zoomed-image {
+		cursor: zoom-in;
+		transform: scale(3);
+	}
+
+	.imagezoom-show {
+		display: block;
 	}
 }
