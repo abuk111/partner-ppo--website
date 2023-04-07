@@ -2,7 +2,7 @@
 @use './mixins' as mix;
 @use './animation' as a;
 
-h1 {
+.invisible {
 	display: none;
 }
 
@@ -67,6 +67,7 @@ header {
 			&-describe {
 				text-align: left;
 				margin-bottom: 1em;
+				line-height: 1.5em;
 			}
 
 			&-btn {
@@ -78,6 +79,44 @@ header {
 				&:hover {
 					@include mix.button-hover;
 				}
+			}
+		}
+	}
+}
+
+// ARTICLE
+
+.article {
+	padding-top: 3em;
+	padding-bottom: 1.5em;
+	color: c.$whiteText;
+
+	&-head {
+		margin-bottom: 1.5em;
+		color: c.$primary;
+	}
+
+	&-paragraph {
+		margin-bottom: 1em;
+		line-height: 1.5em;
+	}
+
+	&-img {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+
+	&__list {
+		margin: 0.5em auto;
+		list-style: none;
+		margin-bottom: 1em;
+
+		&-item {
+			margin: 0.5em auto;
+			line-height: 1.5em;
+
+			i {
+				margin-right: 0.5em;
 			}
 		}
 	}
@@ -123,9 +162,10 @@ header {
 			margin-bottom: 1em;
 			&box {
 				display: grid;
-				grid-template-rows: 1fr 2fr;
+				grid-template-columns: 1fr;
+				grid-template-rows: 0.75fr repeat(2, 2fr) 0.75fr;
 				width: 45%;
-				min-height: 440px;
+				min-height: 670px;
 				margin: 2em 1em;
 				padding: 2em;
 
@@ -147,7 +187,7 @@ header {
 			// flex-wrap: nowrap;
 			&box {
 				width: 30.5%;
-				min-height: 420px;
+				min-height: 670px;
 				&-head {
 					margin-bottom: 1em;
 				}
