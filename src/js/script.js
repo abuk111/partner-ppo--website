@@ -266,19 +266,19 @@ const verifyForms = () => {
 	checkErrors([nameForm, mailForm, phoneForm, messageForm])
 }
 
-// const verifyCaptcha = () => {
-// 	grecaptcha.execute()
+const verifyCaptcha = () => {
+	grecaptcha.execute()
 
-// 	const response = grecaptcha.getResponse()
+	// const response = grecaptcha.getResponse()
 
-// 	response.ajax({
-//         type: "POST",
-//         url: 'https://www.google.com/recaptcha/api/siteverify',
-//         data: {"secret" : "6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X", "response" : response, "remoteip":"localhost"},
-//         contentType: 'application/x-www-form-urlencoded',
-//         success: function(data) { console.log(data); }
-//     });
-// }
+	// response.ajax({
+	//     type: "POST",
+	//     url: 'https://www.google.com/recaptcha/api/siteverify',
+	//     data: {"secret" : "6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X", "response" : response, "remoteip":"localhost"},
+	//     contentType: 'application/x-www-form-urlencoded',
+	//     success: function(data) { console.log(data); }
+	// });
+}
 
 // const verifyCaptcha = () => {
 // 	grecaptcha.execute()
@@ -301,24 +301,24 @@ const verifyForms = () => {
 // 		.then(response => response.json())
 // 		.then(data => console.log(data))
 // }
-const verifyCaptcha = () => {
-	grecaptcha.execute()
+// const verifyCaptcha = () => {
+// 	grecaptcha.execute()
 
-	const token = grecaptcha.getResponse()
+// 	const token = grecaptcha.getResponse()
 
-	fetch('https://www.google.com/recaptcha/api/siteverify', {
-		method: 'POST',
-		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
-		response: token,
-	})
-		.then(response => response.json())
-		.then(data => {
-			console.log('Odpowiedź serwera:', data)
-		})
-		.catch(error => {
-			console.error('Błąd podczas wysyłania żądania:', error)
-		})
-}
+// 	fetch('https://www.google.com/recaptcha/api/siteverify', {
+// 		method: 'POST',
+// 		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
+// 		response: token,
+// 	})
+// 		.then(response => response.json())
+// 		.then(data => {
+// 			console.log('Odpowiedź serwera:', data)
+// 		})
+// 		.catch(error => {
+// 			console.error('Błąd podczas wysyłania żądania:', error)
+// 		})
+// }
 
 // form.addEventListener('submit', function (event) {
 
@@ -393,30 +393,31 @@ window.addEventListener('scroll', () => {
 handleDate()
 navHighlight()
 
-allPlanImages.forEach(img => {
-	img.addEventListener('click', e => {
-		if (window.innerWidth < 1200) {
-			zoomPlanImgMobile(img)
-		} else {
-			zoomPlanImgDesktop(img)
-		}
+if (allPlanImages) {
+	allPlanImages.forEach(img => {
+		img.addEventListener('click', e => {
+			if (window.innerWidth < 1200) {
+				zoomPlanImgMobile(img)
+			} else {
+				zoomPlanImgDesktop(img)
+			}
+		})
 	})
-})
+	
+}
 
-imageZoom.addEventListener('mousemove', zoomImg)
-imageZoom.addEventListener('mouseout', resetImg)
+if (imageZoom) {
+	imageZoom.addEventListener('mousemove', zoomImg)
+	imageZoom.addEventListener('mouseout', resetImg)
+}
 
-zoomCloseBtn.addEventListener('click', closeZoomSection)
+if (zoomCloseBtn) {
+	zoomCloseBtn.addEventListener('click', closeZoomSection)
+}
 
-// allPlanImages.addEventListener('click', e => {
-// 	if (window.innerWidth < 1200) {
-// 		zoomPlanImgMobile(e)
-// 	} else {
-// 		zoomPlanImgDesktop(e)
-// 	}
-// })
-
-sendBtn.addEventListener('click', e => {
-	e.preventDefault()
-	verifyForms()
-})
+if (sendBtn) {
+	sendBtn.addEventListener('click', e => {
+		e.preventDefault()
+		verifyForms()
+	})
+}
