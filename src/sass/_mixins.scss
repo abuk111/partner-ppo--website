@@ -36,14 +36,15 @@
 
 @mixin button {
 	padding: 0.75em 1em;
-	color: c.$whiteText;
+	// color: c.$whiteText;
+	color: c.$darkText;
 	// color: c.$white;
 	background-color: c.$primary;
 	// border: transparent;
 	border: 2px solid transparent;
 	border-radius: 2em;
 	font-weight: bold;
-	text-shadow: 0 0 3px c.$darkText;
+	// text-shadow: 0 0 3px c.$whiteText;
 	cursor: pointer;
 	transition: transform 0.3s, color 0.3s, background-color 0.3s, border 0.3s;
 }

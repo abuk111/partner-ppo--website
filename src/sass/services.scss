@@ -175,7 +175,8 @@ header {
 }
 
 .control,
-.training {
+.training,
+.instruction {
 	&__box {
 		margin-top: 2em;
 		&-imagebox {
@@ -219,7 +220,8 @@ header {
 	}
 
 	.control,
-	.training {
+	.training,
+	.instruction {
 		&__box {
 			&-imagebox {
 				img {
@@ -316,7 +318,8 @@ header {
 	}
 
 	.control,
-	.training {
+	.training,
+	.instruction {
 		&__box {
 			&-imagebox {
 				img {

@@ -23,6 +23,13 @@ const messageForm = document.querySelector('#message')
 
 const form = document.querySelector('#contact-form')
 
+// CONTACT POPUP - VARIABLES
+
+const popup = document.querySelector('.popup')
+const popupOk = document.querySelector('.ok')
+const popupError = document.querySelector('.error')
+const popupClose = document.querySelector('.popup__window-close')
+
 // ZOOM EVACUATION PLAN IMAGES - VARIABLES
 
 const allPlanImages = document.querySelectorAll('.plans__box-imagebox-img')
@@ -268,6 +275,7 @@ const verifyForms = () => {
 
 const verifyCaptcha = () => {
 	grecaptcha.execute()
+	popupOpen()
 
 	// const response = grecaptcha.getResponse()
 
@@ -338,6 +346,29 @@ const verifyCaptcha = () => {
 // 	document.getElementById('contact-form').submit()
 // })
 
+// POPUP
+
+const popupOpen = () => {
+	popup.classList.add('popup-show')
+	showEmailConfirmation()
+}
+
+const showEmailConfirmation = () => {
+	if (document.location.search === '?mail_status=sent') {
+		popupOk.style.display = 'flex'
+		popupError.style.display = 'none'
+	}
+
+	if (document.location.search === '?mail_status=error') {
+		popupOk.style.display = 'none'
+		popupError.style.display = 'flex'
+	}
+}
+
+const closePopup = () => {
+	popup.classList.remove('popup-show')
+}
+
 // ZOOM IMAGES OF EVACUATION PLAN
 
 const zoomPlanImgMobile = image => {
@@ -403,7 +434,6 @@ if (allPlanImages) {
 			}
 		})
 	})
-	
 }
 
 if (imageZoom) {
@@ -420,4 +450,8 @@ if (sendBtn) {
 		e.preventDefault()
 		verifyForms()
 	})
+}
+
+if (popupClose) {
+	popupClose.addEventListener('click', closePopup)
 }

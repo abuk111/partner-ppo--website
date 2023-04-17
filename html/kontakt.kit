@@ -59,8 +59,7 @@
                         <h2 class="contact__contactbox__mailbox-head footer-header">Dane kontaktowe</h2>
                         <div class="contact__contactbox__mailbox-email">
                             <i class="far fa-envelope"></i>
-                            <p> <a href="mailto:partnerppoz@wp.pl">partnerppoz@wp.pl</a> <br> <a
-                                    href="mailto:info@partnerppoz.pl">info@partnerppoz.pl</a></p>
+                            <p> <a href="mailto:partnerppoz@wp.pl">partnerppoz@wp.pl</a></p>
                         </div>
                         <div class="contact__contactbox__mailbox-phone"><i class="fas fa-phone"></i>
                             <p><a href="tel:0048517204340">+48 517 204
@@ -84,25 +83,25 @@
     <section class="form medium-bgc section" id="contact-form" action="?" method="POST">
         <div class="wrapper">
             <h2 class="form__header">Napisz do nas!</h2>
-            <form class="form__formbox">
+            <form class="form__formbox"  action="mail.php" method="post">
                 <div class="form__formbox__formelement">
                     <label for="name">Imię i nazwisko:</label>
-                    <input type="text" id="name" placeholder="Podaj swoje imię i nazwisko">
+                    <input type="text" id="name" placeholder="Podaj swoje imię i nazwisko" name="name">
                     <p class="error-text">error</p>
                 </div>
                 <div class="form__formbox__formelement">
                     <label for="mail">Adres e-mail</label>
-                    <input type="text" id="mail" placeholder="Podaj swój e-mail">
+                    <input type="email" id="mail" placeholder="Podaj swój e-mail" name="email">
                     <p class="error-text">error</p>
                 </div>
                 <div class="form__formbox__formelement">
                     <label for="phone">Telefon:</label>
-                    <input type="text" id="phone" placeholder="Podaj swój numer telefonu">
+                    <input type="text" id="phone" placeholder="Podaj swój numer telefonu" name="phone">
                     <p class="error-text">error</p>
                 </div>
                 <div class="form__formbox__formelement">
                     <label for="message">Wiadomość:</label>
-                    <textarea type="text" id="message" placeholder="Wpisz wiadomość"></textarea>
+                    <textarea type="text" id="message" placeholder="Wpisz wiadomość" name="msg"></textarea>
                     <p class="error-text">error</p>
                 </div>
                 <div class="g-recaptcha" data-sitekey="6LdNTE0lAAAAAOkA1JT44dxW70YmqmOOjRTafaJH" data-size="invisible"
@@ -110,8 +109,17 @@
                 </div>
                 <button type="submit" class="form__formbox__send" id="submit">Wyślij!</button>
             </form>
+           
         </div>
     </section>
+
+    <div class="popup wrapper">
+        <div class="popup__window">
+            <p class="popup__window-text ok">Twoja wiadomość została wysłana! Dziękujemy.</p>
+            <p class="popup__window-text error">Błąd! Spróbuj ponownie.</p>
+            <button class="popup__window-close">Zamknij</button>
+        </div>
+    </div>
 
     <!-- @include footer.kit -->
 
