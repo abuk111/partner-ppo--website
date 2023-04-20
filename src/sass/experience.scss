@@ -46,6 +46,7 @@ header {
 
 		&box {
 			@include mix.flex-center(column);
+			
 			margin: 1em auto;
 
 			&:first-child {
@@ -93,6 +94,8 @@ header {
 
 			&box {
 				@include mix.flex-center(column);
+				justify-content: flex-start;
+				height: 282px;
 
 				margin: 1em;
 

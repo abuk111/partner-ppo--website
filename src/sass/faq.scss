@@ -61,12 +61,13 @@ header {
 
 			&-img {
 				width: 100%;
+				height: 200px;
 				margin-bottom: 1em;
 			}
 
 			&-describe {
 				text-align: left;
-				margin-bottom: 1em;
+				// margin-bottom: 1em;
 				line-height: 1.5em;
 			}
 
@@ -81,6 +82,7 @@ header {
 				}
 			}
 		}
+		
 	}
 }
 
@@ -118,6 +120,23 @@ header {
 			i {
 				margin-right: 0.5em;
 			}
+		}
+	}
+	
+	&__backlink {
+		display: block;
+		margin: 1em auto;
+		color: c.$primary;
+		text-decoration: none;
+		transition: color 0.3s;
+
+		i {
+			margin-right: 0.5em;
+			// color: c.$primary;
+		}
+
+		&:hover {
+			color: c.$secondary;
 		}
 	}
 }

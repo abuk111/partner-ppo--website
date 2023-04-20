@@ -191,6 +191,13 @@ header {
 				@include mix.button-hover;
 			}
 		}
+
+		&__text {
+			a {
+				color: c.$primary;
+				text-decoration: none;
+			}
+		}
 	}
 }
 
@@ -244,6 +251,26 @@ header {
 
 .popup-show {
 	top: 50%;
+}
+
+// PRIVACY POLICY
+
+.policy {
+	padding-top: 2em;
+	padding-bottom: 2em;
+
+	&__head {
+		margin-bottom: 1em;
+		color: c.$primary;
+	}
+	&__text {
+		margin-bottom: 1em;
+		line-height: 1.5em;
+		a{
+			color: c.$primary;
+			text-decoration: none;
+		}
+	}
 }
 
 // MEDIA QUERIES
