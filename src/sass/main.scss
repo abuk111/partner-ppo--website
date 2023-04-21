@@ -60,17 +60,14 @@ nav {
 
 .nav {
 	@include mix.flex-space(row);
-	// margin: 2em auto;
 	padding: 1em 1.75em;
 	color: c.$primary;
-	// background-color: c.$backgroundDark;
 	transition: background-color 0.3s;
 
 	.logo {
 		a {
 			font-family: 'Plus Jakarta Sans', sans-serif;
 			color: c.$primary;
-			// color: c.$secondary;
 			text-decoration: none;
 		}
 		&__container {
@@ -87,7 +84,6 @@ nav {
 				width: 100%;
 				height: 1px;
 				background-color: c.$primary;
-				// background-color: c.$secondary;
 			}
 			&-text {
 				margin-top: 0.25em;
@@ -223,8 +219,6 @@ header {
 				font-family: 'Plus Jakarta Sans', sans-serif;
 				word-spacing: 0.25em;
 				color: c.$primary;
-				// color: c.$secondary;
-				// color: c.$whiteText;
 				text-align: right;
 				text-shadow: 0 0 10px c.$darkText;
 				// z-index: 1;
@@ -238,8 +232,7 @@ header {
 						font-weight: 200;
 						text-transform: uppercase;
 						text-align: right;
-						// color: c.$whiteText;
-
+						
 						strong {
 							font-weight: 400;
 						}
@@ -350,7 +343,7 @@ header {
 				.fa-solid {
 					margin-right: 0.5em;
 				}
-				&:last-child{
+				&:last-child {
 					margin-top: 0.5em;
 				}
 			}
@@ -474,7 +467,6 @@ header {
 // MEDIA QUERIES
 
 @media (min-width: 768px) {
-
 	.wrapper {
 		padding: 0 2.5em;
 	}
@@ -565,7 +557,7 @@ header {
 		&__contact,
 		&__service,
 		&__mapsite {
-			// min-width: 40%;
+			
 			flex-basis: 50%;
 			align-self: start;
 		}
@@ -667,7 +659,7 @@ header {
 		.header {
 			position: relative;
 			@include mix.flex-center(row);
-			// background-color: c.$backgroundLight;
+			
 
 			&__hero-img {
 				width: 100%;

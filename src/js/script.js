@@ -277,74 +277,10 @@ const verifyCaptcha = () => {
 	grecaptcha.execute()
 	popupOpen()
 
-	// const response = grecaptcha.getResponse()
-
-	// response.ajax({
-	//     type: "POST",
-	//     url: 'https://www.google.com/recaptcha/api/siteverify',
-	//     data: {"secret" : "6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X", "response" : response, "remoteip":"localhost"},
-	//     contentType: 'application/x-www-form-urlencoded',
-	//     success: function(data) { console.log(data); }
-	// });
+	
 }
 
-// const verifyCaptcha = () => {
-// 	grecaptcha.execute()
-// 	const token = grecaptcha.getResponse()
-// 	console.log(token)
 
-// 	const postData = {
-// 		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
-// 		response: 'USER_RESPONSE_KEY',
-// 	}
-
-// 	fetch('https://www.google.com/recaptcha/api/siteverify', {
-// 		method: 'POST',
-// 		headers: {
-// 			'Content-Type': 'application/x-www-form-urlencoded',
-// 		},
-// 		mode: 'cors',
-// 		body: new URLSearchParams(postData),
-// 	})
-// 		.then(response => response.json())
-// 		.then(data => console.log(data))
-// }
-// const verifyCaptcha = () => {
-// 	grecaptcha.execute()
-
-// 	const token = grecaptcha.getResponse()
-
-// 	fetch('https://www.google.com/recaptcha/api/siteverify', {
-// 		method: 'POST',
-// 		secret: '6LdNTE0lAAAAAFBpvJwiEoFK_07j_dTfOZB_Hs6X',
-// 		response: token,
-// 	})
-// 		.then(response => response.json())
-// 		.then(data => {
-// 			console.log('Odpowiedź serwera:', data)
-// 		})
-// 		.catch(error => {
-// 			console.error('Błąd podczas wysyłania żądania:', error)
-// 		})
-// }
-
-// form.addEventListener('submit', function (event) {
-
-// 	event.preventDefault()
-
-// 	// Pobierz odpowiedź reCAPTCHA
-// 	const response = grecaptcha.getResponse()
-
-// 	// Jeśli odpowiedź jest pusta
-// 	if (response.length == 0) {
-// 		// Wyświetl komunikat o błędzie
-// 		alert('Potwierdź, że nie jesteś robotem!')
-// 		return false
-// 	}
-
-// 	// Jeśli odpowiedź istnieje, wyślij formularz
-// 	document.getElementById('contact-form').submit()
-// })
 
 // POPUP
 
