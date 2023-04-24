@@ -62,12 +62,30 @@ const navbarItemEntry = () => {
 	})
 }
 
+const scrollDisable = scrollY => {
+	window.onscroll = () => {
+		window.scrollTo({
+			top: scrollY,
+			left: 0,
+			behavior: 'instant',
+		})
+	}
+}
+
+function enableScroll() {
+	window.onscroll = function () {}
+}
+
 const navHandling = () => {
 	if (!navbar.classList.contains('navbar-active')) {
+		const scrollY = window.scrollY
+		scrollDisable(scrollY)
 		showNav()
 	} else {
 		hideNav()
+		enableScroll()
 	}
+
 	navbarItemEntry()
 	navbarListItem.forEach(item => {
 		item.addEventListener('click', hideNav)
@@ -276,11 +294,7 @@ const verifyForms = () => {
 const verifyCaptcha = () => {
 	grecaptcha.execute()
 	popupOpen()
-
-	
 }
-
-
 
 // POPUP
 
