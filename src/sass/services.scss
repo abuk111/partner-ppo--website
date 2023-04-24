@@ -95,7 +95,7 @@ header {
 .plans,
 .training,
 .control {
-	padding-top: 2em;
+	padding-top: 3em;
 	padding-bottom: 1em;
 	color: c.$whiteText;
 	background-color: c.$backgroundMedium;
@@ -180,10 +180,10 @@ header {
 	&__box {
 		margin-top: 2em;
 		&-imagebox {
-			margin-top: 2em;
+			margin: 2em auto;
 			@include mix.flex-center(row);
 			img {
-				height: 200px;
+				width: 100%;
 			}
 		}
 	}
@@ -214,7 +214,7 @@ header {
 		&__box {
 			&es {
 				max-width: 50%;
-				margin: 0.5em 0.5em;
+				margin: 1em 0.5em;
 			}
 		}
 	}
@@ -225,7 +225,7 @@ header {
 		&__box {
 			&-imagebox {
 				img {
-					height: 300px;
+					width: 70%;
 				}
 			}
 		}
@@ -252,23 +252,27 @@ header {
 		padding-top: 2em;
 		padding-bottom: 3em;
 
+		&__head-text {
+			margin-bottom: 2em;
+		}
+
 		&__box {
 			@include mix.flex-center(row);
 			flex-wrap: wrap;
 			margin-top: 1em;
-			margin-bottom: 1em;
+			margin-bottom: 2em;
 			&es {
 				display: grid;
 				grid-template-rows: 1fr 2fr;
 				width: 33%;
 				min-height: 440px;
-				margin: 2em 1em;
+				margin: 1em 1em;
 				padding: 2em;
 
-				&:first-child {
+				&:nth-child(odd) {
 					margin-left: 0;
 				}
-				&:last-child {
+				&:nth-child(even) {
 					margin-right: 0;
 				}
 
@@ -323,7 +327,7 @@ header {
 		&__box {
 			&-imagebox {
 				img {
-					height: 400px;
+					width: 70%;
 				}
 			}
 		}
@@ -345,6 +349,20 @@ header {
 			&es {
 				width: 275px;
 				min-height: 420px;
+
+				&:nth-child(odd) {
+					margin-left: 1em;
+				}
+				&:nth-child(even) {
+					margin-right: 1em;
+				}
+				&:first-child {
+					margin-left: 0;
+				}
+				&:last-child {
+					margin-right: 0;
+				}
+
 				&__head {
 					margin-bottom: 1em;
 				}
