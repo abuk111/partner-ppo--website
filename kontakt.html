@@ -25,10 +25,8 @@
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/a8324f3062.js" crossorigin="anonymous"></script>
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeAUsolAAAAAID9fposgPMYQJUff1syJaM2TV_z"></script>
 
-    </script>
     <link rel="stylesheet" href="./dist/css/main-min.css">
     <link rel="stylesheet" href="./dist/css/contact-min.css">
 </head>
@@ -132,10 +130,10 @@
         </div>
     </section>
 
-    <section class="form medium-bgc section" id="contact-form" action="?" method="POST">
+    <section class="form medium-bgc section" id="contact-form">
         <div class="wrapper">
             <h2 class="form__header">Napisz do nas!</h2>
-            <form class="form__formbox" action="mail.php" method="post">
+            <form class="form__formbox">
                 <div class="form__formbox__formelement">
                     <label for="name">Imię i nazwisko:</label>
                     <input type="text" id="name" placeholder="Podaj swoje imię i nazwisko" name="name">
@@ -158,10 +156,9 @@
                 </div>
                 <p class="form__formbox__text">Wysyłając nam wiadomość akceptujesz <a
                         href="./polityka_prywatnosci.html">Politykę Prywatności</a></p>
-                <div class="g-recaptcha" data-sitekey="6LdNTE0lAAAAAOkA1JT44dxW70YmqmOOjRTafaJH" data-size="invisible"
-                    data-callback="onSubmit">
-                </div>
-                <button type="submit" class="form__formbox__send" id="submit">Wyślij!</button>
+
+                <input type='hidden' id='recaptcha-token' name='g-recaptcha-response' value=''>
+                <button class="form__formbox__send" type="submit">Wyślij!</button>
             </form>
 
         </div>
@@ -170,7 +167,8 @@
     <div class="popup wrapper">
         <div class="popup__window">
             <p class="popup__window-text ok">Twoja wiadomość została wysłana! Dziękujemy.</p>
-            <p class="popup__window-text error">Błąd! Spróbuj ponownie.</p>
+            <p class="popup__window-text error">Błąd! Spróbuj ponownie lub wyślij nam maila ze swojej skrzynki pocztowej
+                na adres: <a href="mailto:partnerppoz@wp.pl">partnerppoz@wp.pl</a></p>
             <button class="popup__window-close">Zamknij</button>
         </div>
     </div>
@@ -241,6 +239,11 @@
     </div>
 </footer>
 
+    <script>	grecaptcha.ready(function () {
+            grecaptcha.execute('6LeAUsolAAAAAID9fposgPMYQJUff1syJaM2TV_z', { action: 'submit' }).then(function (token) {
+                document.getElementById('recaptcha-token').value = token
+            })
+        })</script>
 
     <script src="./dist/js/script-min.js"></script>
 

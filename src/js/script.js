@@ -21,7 +21,7 @@ const mailForm = document.querySelector('#mail')
 const phoneForm = document.querySelector('#phone')
 const messageForm = document.querySelector('#message')
 
-const form = document.querySelector('#contact-form')
+const form = document.querySelector('.form__formbox')
 
 // CONTACT POPUP - VARIABLES
 
@@ -123,7 +123,7 @@ const navHighlight = params => {
 				}
 			})
 			break
-		case '/faq.html':
+		case '/baza-wiedzy.html':
 			navbarListItem.forEach(item => {
 				if (item.children[0].id == 'FAQPage') {
 					item.children[0].classList.add('link-active')
@@ -281,8 +281,9 @@ const checkErrors = input => {
 	})
 	if (errorCount === 0) {
 		errorCount = 0
-		console.log('start weryfikacji')
 		verifyCaptcha()
+	} else {
+		return false
 	}
 }
 
@@ -292,28 +293,50 @@ const verifyForms = () => {
 }
 
 const verifyCaptcha = () => {
-	grecaptcha.execute()
-	popupOpen()
+	// utwórz obiekt FormData z danymi formularza
+	const data = new FormData(form)
+
+	// wyślij żądanie Fetch z danymi formularza
+	fetch('mail.php', {
+		method: 'POST',
+		body: data,
+		token: document.getElementById('recaptcha-token').value,
+	})
+		.then(function (response) {
+			// sprawdź status odpowiedzi
+			// console.log(response)
+			if (response.ok) {
+				if (response.url.includes('?mail_status=sent')) {
+					console.log('Formularz został wysłany')
+					popup.classList.add('popup-show')
+					popupOk.style.display = 'flex'
+					popupError.style.display = 'none'
+				} else {
+					// jeśli błąd, wyświetl komunikat
+					console.log(`Wystąpił błąd`)
+					popup.classList.add('popup-show')
+					popupOk.style.display = 'none'
+					popupError.style.display = 'flex'
+				}
+			} else {
+				// jeśli błąd, wyświetl komunikat
+				console.log(`Wystąpił błąd (${response.status}): ${response.statusText}`)
+				popup.classList.add('popup-show')
+				popupOk.style.display = 'none'
+				popupError.style.display = 'flex'
+			}
+		})
+		.catch(function (error) {
+			// jeśli wystąpił jakiś inny błąd, wyświetl komunikat
+			console.log(response)
+			console.log(`Wystąpił błąd (${response.status}): ${response.statusText}`)
+			popup.classList.add('popup-show')
+			popupOk.style.display = 'none'
+			popupError.style.display = 'flex'
+		})
 }
 
 // POPUP
-
-const popupOpen = () => {
-	popup.classList.add('popup-show')
-	showEmailConfirmation()
-}
-
-const showEmailConfirmation = () => {
-	if (document.location.search === '?mail_status=sent') {
-		popupOk.style.display = 'flex'
-		popupError.style.display = 'none'
-	}
-
-	if (document.location.search === '?mail_status=error') {
-		popupOk.style.display = 'none'
-		popupError.style.display = 'flex'
-	}
-}
 
 const closePopup = () => {
 	popup.classList.remove('popup-show')

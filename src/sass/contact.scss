@@ -56,7 +56,6 @@ header {
 			&-adress,
 			&-nip {
 				@include mix.flex-start(row);
-				// align-items: flex-start;
 				i {
 					width: 27px;
 					margin-right: 0.75em;
@@ -75,7 +74,6 @@ header {
 			&-email,
 			&-phone {
 				@include mix.flex-start(row);
-				// align-items: flex-start;
 				margin-bottom: 0.25em;
 				line-height: 1.5em;
 
@@ -168,14 +166,12 @@ header {
 			}
 
 			.error-text {
-				// display: none;
 				visibility: hidden;
 				margin: 0.5em 0;
 				color: red;
 			}
 
 			.show {
-				// display: block;
 				visibility: visible;
 			}
 		}
@@ -211,7 +207,6 @@ header {
 	top: -100%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	// filter: blur(1rem);
 	z-index: 0;
 
 	&__window {
@@ -232,10 +227,14 @@ header {
 		}
 
 		.ok {
-			display: flex;
+			display: none;
 		}
 		.error {
 			display: none;
+			a {
+				color: c.$primary;
+				text-decoration: none;
+			}
 		}
 
 		&-close {
@@ -266,7 +265,7 @@ header {
 	&__text {
 		margin-bottom: 1em;
 		line-height: 1.5em;
-		a{
+		a {
 			color: c.$primary;
 			text-decoration: none;
 		}

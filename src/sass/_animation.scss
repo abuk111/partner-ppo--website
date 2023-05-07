@@ -31,11 +31,9 @@
 @keyframes burgerSwapCenter {
 	from {
 		background-color: c.$primary;
-		// background-color: c.$secondary;
 	}
 	to {
 		background-color: c.$backgroundDark;
-		// background-color: c.$backgroundLight;
 	}
 }
 @keyframes burgerSwapTop {
@@ -43,12 +41,10 @@
 		top: 15px;
 		transform: rotate(0deg);
 		background-color: c.$primary;
-		// background-color: c.$secondary;
 	}
 	to {
 		top: 0;
 		transform: rotate(45deg);
-		// background-color: c.$darkText;
 		background-color: c.$secondary;
 	}
 }
@@ -61,7 +57,6 @@
 	to {
 		top: 0;
 		transform: rotate(-45deg);
-		// background-color: c.$darkText;
 		background-color: c.$secondary;
 	}
 }
@@ -78,12 +73,10 @@
 
 @keyframes burgerBackCenter {
 	from {
-		// background-color: c.$backgroundLight;
 		background-color: c.$secondary;
 	}
 	to {
 		background-color: c.$primary;
-		// background-color: c.$secondary;
 	}
 }
 @keyframes burgerBackTop {
@@ -96,7 +89,6 @@
 		top: 15px;
 		transform: rotate(0deg);
 		background-color: c.$primary;
-		// background-color: c.$secondary;
 	}
 }
 @keyframes burgerBackBottom {
@@ -109,7 +101,6 @@
 		top: -15px;
 		transform: rotate(0deg);
 		background-color: c.$primary;
-		// background-color: c.$secondary;
 	}
 }
 
